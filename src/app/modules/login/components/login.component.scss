@@ -1,0 +1,104 @@
+.loginBoxContainer {
+    background-image: url('../../../../assets/images/timesheet.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.8;
+    height: 100vh;
+  }
+
+  .loginbox {
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 30px 30px;
+    box-shadow: 6px 5px 10px grey;
+  }  
+
+  .loginInputs {
+    border: 1px solid #997979;
+    background: transparent;
+    outline: none;
+    border-radius: 2px;
+    padding-left: 10px;
+    width: 100%;
+    color: black;
+    height: 3rem;
+    margin-bottom: 10px;
+  }
+
+  input:focus~.loginButton {
+    background: green;
+  }
+
+  ::placeholder {
+    color: grey;
+  }
+  
+  .loginButton a {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 20px;
+    width: 100%;
+    color: white;
+  }
+  
+  .loginButton {
+    background: green;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    border: none;
+    width: 100%;
+    color: white;
+  }
+
+  .forgetPwd {
+    height: 57px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+    color: blue;
+  }
+  
+  .forgetPwd span {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .forgetPwd a {
+    color: blue;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 20px;
+    margin-left: 3px;
+  }
+
+  .register {
+    height: 57px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    color: blue;
+  }
+  
+  .register span {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .logo img {
+    width: 60px;
+    height: 60px;
+  }
