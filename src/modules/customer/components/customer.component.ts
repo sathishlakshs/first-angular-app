@@ -6,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer.component.scss']
 })
 export class CustomerComponent implements OnInit {
-title: string;
+public title: string = 'customer';
 
   ngOnInit() {
-    this.title = 'login';
+
   }
 }
