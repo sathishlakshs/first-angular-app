@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CustomerComponent } from './modules/customer/components/customer.component';
 import { PNFComponent } from './modules/PageNotFoundComponent/components/PNFC.component';
-import { EmployeeComponent } from './modules/employee/employee.component';
+import { EmployeeComponent } from './modules/employee/employee-list/employee.component';
 
 const routes: Routes = [
   {
