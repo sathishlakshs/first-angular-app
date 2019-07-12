@@ -6,13 +6,15 @@ import { StoreModule } from '@ngrx/store';
 import { customerReducer } from 'src/store/reducers/customer.reducer';
 import { temp } from './modules/employee/employee-list/employee.component';
 import { InputComponent } from './common/input/input.component';
+import { TableComponent } from './common/table/table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponent,
     temp,
-    InputComponent
+    InputComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
