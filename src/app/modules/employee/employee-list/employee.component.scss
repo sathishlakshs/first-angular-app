@@ -1,0 +1,6 @@
+@mixin paddingTop($a) {
+  padding-top: $a;
+}
+.pt {
+  @include paddingTop(10);
+}
