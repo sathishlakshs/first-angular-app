@@ -1,9 +1,9 @@
-<div><app-table [enableHover] = "true" 
+
+<div *ngIf="custs.length > 0; then tableComponent"></div>
+<ng-template #tableComponent>
+    <app-table [enableHover] = "true" 
     [isEditRequire]="true" 
     [isDeleteRequire]="true" 
-    [spaceNeedColumn] = "[
-    {key: 'name', requireSpace: 2, align: 'center'},
-    { key: 'role', requireSpace: 1, align: 'left' },
-    { key: 'edit', requireSpace: 1, align: 'right' }
-  ]" 
-  [dat] = "custs"></app-table></div>
+    [spaceNeedColumn] = "[{key:'name', requireSpace:7}]" 
+  [data] = "custs"></app-table>
+  </ng-template>

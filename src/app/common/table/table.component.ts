@@ -44,28 +44,25 @@ export class TableComponent implements OnInit {
   @Input()
   public spaceNeedColumn: {key: string, requireSpace: number, align: string}[];
   @Input()
-  public data = [
-    {name: 'sathish', role: 'developer', age: 28},
-    {name: 'sudharshan', role: 'developer', age: 22},
-    {name: 'sindhu', role: 'developer', age: 24}
-  ];
+  public data: any[];
   @Input()
   public enableHover: boolean;
   @Input()
   public isEditRequire: boolean;
   @Input()
-  public isDeleteRequire = false;
+  public isDeleteRequire: boolean;
   @Input()
-  public dat;
+  public dat: any[];
  public objectKeys =  Object.keys;
  public evenWidth = 0;
-public objectLength = Object.keys(this.data[0]).length;
+public objectLength = 0;
 public evenlyMinus = 0;
 public totalExpectedSpace = 0;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-    console.log(this.dat);
+ ngOnInit() {
+   console.log(this.data);
+  this.objectLength = Object.keys(this.data[0]).length;
     const row = _.cloneDeep(this.data[0]);
     if ( this.isEditRequire ) {
       this.objectLength +=  1;
