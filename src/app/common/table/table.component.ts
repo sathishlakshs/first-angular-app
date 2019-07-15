@@ -60,8 +60,8 @@ export class TableComponent implements OnInit {
   public totalExpectedSpace = 0;
   constructor() { }
 
-  ngOnInit() {
-    this.objectLength = Object.keys(this.data[0]).length;
+ ngOnInit() {
+  this.objectLength = Object.keys(this.data[0]).length;
     const row = _.cloneDeep(this.data[0]);
     if (this.isEditRequire) {
       this.objectLength += 1;
@@ -90,14 +90,14 @@ export class TableComponent implements OnInit {
         temp.push({ key, requireSpace: 0, align: 'center' });
       }
     }
-    this.spaceNeedColumn = temp;
-    this.evenlyMinus = (this.objectLength - spaceRequireArrLength) / this.totalExpectedSpace;
+  this.spaceNeedColumn = temp;
+    this.evenlyMinus = this.totalExpectedSpace / (this.objectLength - spaceRequireArrLength );
     this.evenWidth = (1 / this.objectLength * 100) - (this.evenlyMinus * this.totalExpectedSpace);
   }
 
   ngWidthStyle = (key: string, i: number): object => {
     let returnObject = {
-      width: this.evenWidth + '%',
+      width: 1 / this.objectLength * 100  + '%',
       textAlign: 'center'
     };
     for (const [index, item] of this.spaceNeedColumn.entries()) {
@@ -106,8 +106,13 @@ export class TableComponent implements OnInit {
           returnObject = {
             width: 1 / this.objectLength * 100 + item.requireSpace + '%',
             textAlign: item.align
-          };
-        }
+        };
+      } else {
+        returnObject = {
+          width: 1 / this.objectLength * 100 + '%',
+          textAlign: item.align ? item.align : 'center'
+        };
+      }
       }
     }
     if (i >= this.objectLength - 1) {
