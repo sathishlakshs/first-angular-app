@@ -1,11 +1,75 @@
-.green{
-    color: green;
+.green {
+  color: green;
 }
 
-.flex{
-    display: flex;
+.flex {
+  display: flex;
 }
 
 .pointer {
-    cursor: pointer;
+  cursor: pointer;
+}
+.sideBarContainer {
+  position: fixed;
+  height: 100vh;
+  background-color: #0a1326;
+  color: #fff;
+  z-index: 2;
+  .logo {
+    height: 64px;
+    width: 64px;
+    background-color: #1b1b31;
   }
+  .sideBarIcons {
+    height: 64px;
+    width: 64px;
+    .menusSvg {
+      width: 80%;
+      height: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      opacity: 0.6;
+      color: #fff;
+    }
+    .sideBarHoverClass {
+      display: inline-block;
+      position: absolute;
+      background-color: #0a1326;
+      padding: 8px 15px;
+      border-radius: 3px;
+      margin-top: -26px;
+      left: 70px;
+      visibility: hidden;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      color: #fff;
+      top: 40px;
+      text-align: center;
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: -4px;
+        top: 10px;
+        transform: rotate(45deg);
+        width: 10px;
+        height: 10px;
+        background-color: inherit;
+      }
+    }
+    &:hover {
+      .menusSvg {
+        opacity: 1;
+      }
+      .sideBarHoverClass {
+        visibility: visible;
+      }
+    }
+  }
+}
+.ChildrensWidth {
+  width: calc(100% - 64px);
+  float: right;
+}

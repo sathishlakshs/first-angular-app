@@ -12,7 +12,9 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  add(){
+    this.openForm=!this.openForm;
+  }
 
 }
 

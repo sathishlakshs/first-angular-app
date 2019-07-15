@@ -1,27 +1,28 @@
 import { Component, OnInit, Input } from '@angular/core';
-
 @Component({
-  selector: 'app-input',
+  selector: 'app-date-picker',
   template: `
-  <div class="inputFieldContainer ">
+  <div class="inputDateContainer ">
      <label>{{props.label}}</label>
-     <input type={{props.type}} placeholder={{props.placeholder}} value={{props.value}} 
-     class="inputFiled"
+     <input type="date" placeholder={{props.placeholder}} value={{props.value}} 
+     class="inputDate"
      (change)="onChanges($event)"
      name={{props.name}}
      [disabled]="props.isDisabled"
+     max={{props.maxDate}}
+     min={{props.minDate}}
      >
      <span class='error'>{{props.errorMsg}}</span>
  </div>
   `,
   styles: [`
-  .inputFieldContainer{
+  .inputDateContainer{
     display:grid;
     row-gap: 10px;
     width: 100%;
     position: relative;
   }
-  .inputFiled{
+  .inputDate{
     color:#747476;
     border:none;
     height:40px;
@@ -29,37 +30,36 @@ import { Component, OnInit, Input } from '@angular/core';
     background:#f1f2f5;
     border-radius:5px;
     outline:none;
+   }
+   .inputDate::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+   }
+  
+}
+  
+  `
 
-  }`
 
+  ]
 
-]
- 
 })
-export class InputComponent implements OnInit {
+export class DatePickerComponent implements OnInit {
   @Input() props: {
     name: string,
-    type: string,
     placeholder: string,
-    value:string,
-    onChange:any,
+    value: string,
+    onChange: any,
     errorMsg: string,
     isMandatory: boolean,
     isDisabled: boolean,
     label: string,
-    class:string,
+    class: string,
+    maxDate: Date,
+    minDate: Date,
   }
-
-
-
   constructor() { }
 
   ngOnInit() {
-    let { isDisabled } = this.props;
-    this.props.isDisabled = !isDisabled ? false : isDisabled;
-  }
-  onChanges = (e) => {
-    console.log("hai");
   }
 
 }

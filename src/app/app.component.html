@@ -1,3 +1,13 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div></div>
-<router-outlet></router-outlet>
+<div>
+    <div class="sideBarContainer">
+        <a *ngFor="let item of menus">
+            <div class="sideBarIcons h64 middle relative pointer">
+                <div class="menusSvg">
+                    <a [routerLink]="item.route" routerLinkActive="active" cl> <img src={{item.icon}}></a>
+                </div>
+                <span class="sideBarHoverClass ">{{item.menuName}}</span>
+            </div>
+        </a>
+    </div>
+   <div class="ChildrensWidth"> <router-outlet></router-outlet></div>
+</div>

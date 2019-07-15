@@ -1,3 +1,11 @@
-<app-input  
-  [props]="props"
-   ></app-input>
+<div class="col-12 flex wrap">
+    <app-search-box [props]="searchProps"></app-search-box>
+    <app-select-box [props]="selectProps"></app-select-box>
+    <div class="col-2 mr5 ">
+        <app-input [props]="props"></app-input>
+    </div>
+
+    <app-date-picker [props]="props"></app-date-picker>
+
+
+</div>
