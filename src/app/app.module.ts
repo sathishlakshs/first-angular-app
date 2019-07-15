@@ -4,9 +4,10 @@ import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { customerReducer } from 'src/store/reducers/customer.reducer';
-import { temp } from './modules/employee/employee-list/employee.component';
 import { InputComponent } from './common/input/input.component';
 import { TableComponent } from './common/table/table.component';
+import { temp } from './modules/employee/employee-list/employee.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TableComponent } from './common/table/table.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ customerState: customerReducer })
+    StoreModule.forRoot({ customerState: customerReducer }),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

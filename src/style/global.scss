@@ -1,6 +1,15 @@
 body{
     margin: 0 !important;
     padding: 0 !important;
+    background-color: #fafafa !important;
+}
+// fontSection
+.fs13 {
+    font-size: 13px;
+}
+
+.bgRed{
+    background-color: red;
 }
 
 .red{
@@ -30,6 +39,9 @@ nav a.active {
 
 .flex{
     display: flex;
+}
+.inFlex{
+    display: inline-flex;
 }
 
 .txtCenter{
