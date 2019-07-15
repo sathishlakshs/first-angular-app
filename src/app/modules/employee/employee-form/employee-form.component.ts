@@ -10,7 +10,7 @@ export class EmployeeFormComponent implements OnInit {
     name: 'name',
     type: 'text',
     placeholder: 'enter a name',
-    value: 'sudharshan',
+    value: '',
     errorMsg: 'error',
     isMandatory: true,
     isDisabled: false,

@@ -7,6 +7,7 @@ import { customerReducer } from 'src/store/reducers/customer.reducer';
 import { temp } from './modules/employee/employee-list/employee.component';
 import { InputComponent } from './common/input/input.component';
 import { TableComponent } from './common/table/table.component';
+import { SearchBoxComponent } from './common/search-box/search-box.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { TableComponent } from './common/table/table.component';
     routingComponent,
     temp,
     InputComponent,
-    TableComponent
+    TableComponent,
+    SearchBoxComponent
   ],
   imports: [
     BrowserModule,
