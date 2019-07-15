@@ -8,7 +8,6 @@ import { EmployeeFormComponent } from '../employee-form/employee-form.component'
 })
 export class EmployeeComponent implements OnInit {
   openForm = false;
- 
   constructor() { }
 
   ngOnInit() {

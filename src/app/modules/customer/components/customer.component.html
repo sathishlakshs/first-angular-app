@@ -1,1 +1,9 @@
-<div><app-table ></app-table></div>
+<div><app-table [enableHover] = "true" 
+    [isEditRequire]="true" 
+    [isDeleteRequire]="true" 
+    [spaceNeedColumn] = "[
+    {key: 'name', requireSpace: 2, align: 'center'},
+    { key: 'role', requireSpace: 1, align: 'left' },
+    { key: 'edit', requireSpace: 1, align: 'right' }
+  ]" 
+  [dat] = "custs"></app-table></div>
