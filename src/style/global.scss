@@ -1,15 +1,15 @@
-body{
-    margin: 0 !important;
-    padding: 0 !important;
-    background-color: #fafafa !important;
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: #fafafa !important;
 }
 // fontSection
 .fs13 {
-    font-size: 13px;
+  font-size: 13px;
 }
 
-.bgRed{
-    background-color: red;
+.bgRed {
+  background-color: red;
 }
 
 .red {
@@ -41,8 +41,8 @@ nav a.active {
 .flex {
   display: flex;
 }
-.inFlex{
-    display: inline-flex;
+.inFlex {
+  display: inline-flex;
 }
 
 .txtCenter {
@@ -61,6 +61,9 @@ nav a.active {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.h64{
+  height: 64px;
 }
 
 // @mixin hai ($property) {
@@ -613,4 +616,16 @@ nav a.active {
 }
 .wrap {
   flex-wrap: wrap;
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.top10 {
+  top: 10px;
+}
+.right0 {
+  right: 0px;
 }

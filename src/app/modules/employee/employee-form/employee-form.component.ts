@@ -16,6 +16,18 @@ export class EmployeeFormComponent implements OnInit {
     isDisabled: false,
     label: 'name'
   };
+  public searchProps = {
+    name: 'name',
+    placeholder: 'Search a value',
+    value: '',
+  };
+  public selectProps = {
+    options: [{ id: 0, name: "sudarshan" }, { id: 1, name: "sathish" }, { id: 3, name: "sindhu" }],
+    onChange: this.handleChange,
+  }
+  handleChange() {
+    console.log("searched")
+  };
   constructor() { }
 
 

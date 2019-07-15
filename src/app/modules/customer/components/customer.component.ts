@@ -11,19 +11,18 @@ import { CustomerService } from '../pages/customer.service';
   styleUrls: ['./customer.component.scss']
 })
 export class CustomerComponent implements OnInit {
-public title: string = 'customer';
-public customers: Observable<Customer[]>;
-public custs: any[];
+  public title: string = 'customer';
+  public customers: Observable<Customer[]>;
+  public custs: any[];
 
-constructor(private store: Store<AppState>, private customerService: CustomerService) {
-  this.customers = store.select('customerState');
-  this.customers.subscribe(state => console.log(state));
-}
+  constructor(private store: Store<AppState>, private customerService: CustomerService) {
+    this.customers = store.select('customerState');
+    this.customers.subscribe(state => console.log(state));
+  }
 
   ngOnInit() {
     this.customerService.getCustomers().subscribe(data => {
-      console.log(data);
-    this.custs = data;
-   });
+      this.custs = data;
+    });
   }
 }
