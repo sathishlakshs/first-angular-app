@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SelectBoxComponent } from './common/select-box/select-box.component';
 import { CommonModule } from '@angular/common';
 import { DatePickerComponent } from './common/date-picker/date-picker.component';
+import { HeaderComponent } from './common/header/header.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DatePickerComponent } from './common/date-picker/date-picker.component'
     TableComponent,
     SearchBoxComponent,
     SelectBoxComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

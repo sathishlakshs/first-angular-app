@@ -61,7 +61,6 @@ export class TableComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.data);
     this.objectLength = Object.keys(this.data[0]).length;
     const row = _.cloneDeep(this.data[0]);
     if (this.isEditRequire) {
