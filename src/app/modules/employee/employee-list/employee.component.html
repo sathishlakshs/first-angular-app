@@ -1,2 +1,4 @@
-<header class="pt" ></header>
-<app-employee-form></app-employee-form>
+<header class="pt">
+    <button (click)="add()">ADD Employee</button>
+</header>
+<app-employee-form *ngIf="openForm"></app-employee-form>

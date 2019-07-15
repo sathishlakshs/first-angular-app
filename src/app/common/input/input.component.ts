@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-input',
   template: `
-  <div class="inputFieldContainer">
+  <div class="inputFieldContainer ">
      <label>{{props.label}}</label>
      <input type={{props.type}} placeholder={{props.placeholder}} value={{props.value}} 
      class="inputFiled"
@@ -47,6 +47,7 @@ export class InputComponent implements OnInit {
     isMandatory: boolean,
     isDisabled: boolean,
     label: string,
+    class:string,
   }
 
 
