@@ -3,10 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { CustomerComponent } from './modules/customer/components/customer.component';
 import { PNFComponent } from './modules/PageNotFoundComponent/components/PNFC.component';
 import { EmployeeComponent } from './modules/employee/employee-list/employee.component';
+import { CustomerformComponent } from './modules/customer/customerform/customerform.component';
 
 const routes: Routes = [
   {
-    path: '', redirectTo: '/customer', pathMatch: 'full'
+    path: '', redirectTo: 'layout/customerForm', pathMatch: 'full'
   },
   { path: 'layout/customer', component: CustomerComponent },
   { path: 'layout/employee', component: EmployeeComponent },
@@ -29,4 +30,4 @@ const routes: Routes = [
 export class AppRoutingModule {
 }
 
-export const routingComponent = [CustomerComponent, EmployeeComponent, PNFComponent];
+export const routingComponent = [CustomerComponent, CustomerformComponent, EmployeeComponent, PNFComponent];
