@@ -2,18 +2,27 @@
 <button type="button" data-toggle="modal" data-target="#exampleModalCenter">
     Add Employee
 </button>
-<app-table></app-table>
+<ng-template [ngIf]="employeeList.length > 0" >
+    <app-table [enableHover] = "true" 
+    [isEditRequire]="true" 
+    [isDeleteRequire]="true" 
+    [spaceNeedColumn] = "[]" 
+  [data] = "employeeList"></app-table>
+  </ng-template>
+<!-- <app-table [enableHover]="true" [isEditRequire]="true" [isDeleteRequire]="true" [spaceNeedColumn]="[]"
+    [data]="employeeList">
+</app-table> -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog employeeFormModal modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Employee Form</h5>
-               
+
             </div>
             <div class="modal-body">
                 <app-employee-form></app-employee-form>
             </div>
-            
+
+        </div>
     </div>
-</div>

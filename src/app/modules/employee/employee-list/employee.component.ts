@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeFormComponent } from '../employee-form/employee-form.component';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/store/reducers';
+import { EmployeeService } from '../pages/employee.service';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-employee',
@@ -8,9 +12,26 @@ import { EmployeeFormComponent } from '../employee-form/employee-form.component'
 })
 export class EmployeeComponent implements OnInit {
   openForm = false;
-  constructor() { }
+  public employeeList: any[] = [];
+  constructor(private store: Store<AppState>, private employeeService: EmployeeService) { }
 
   ngOnInit() {
+    this.employeeService.getEmployee().subscribe(data => {
+      let returnObject = {};
+      this.employeeList = _.map(data, item => {
+        returnObject = _.pick(item, ['profilePic', 'firstName', 'email', 'phoneNo']);
+        // tslint:disable-next-line:no-string-literal
+        if (returnObject['profilePic']) {
+          // tslint:disable-next-line:no-string-literal
+          returnObject['profilePic'] = <img [src]=' + returnObject[';profilePic'] + '/>;
+        } else {
+          // tslint:disable-next-line:no-string-literal
+          returnObject['profilePic'] = '<span>' + item.firstName[0] + item.lastName[0] + '</span>';
+        }
+        return returnObject;
+      });
+      console.log(this.employeeList);
+    });
   }
   add() {
     this.openForm = !this.openForm;
