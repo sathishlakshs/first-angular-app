@@ -28,6 +28,7 @@ import { Component, OnInit, Input } from '@angular/core';
     background:#f1f2f5;
     border-radius:5px;
     outline:none;
+    width: 100%;
 
   }`
 ]

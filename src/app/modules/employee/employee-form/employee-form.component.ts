@@ -18,7 +18,14 @@ export class EmployeeFormComponent implements OnInit {
     placeholder: 'Search a value',
     value: '',
   };
-  public id;
+  public id: any;
+  public firstName: any;
+  public lastName: any;
+  public dob: any;
+  public email: any;
+  public phoneNo: any;
+  public commAddress: any;
+  public perAddress: any;
   public selectProps = {
     options: [{ id: 0, name: 'sudarshan' }, { id: 1, name: 'sathish' }, { id: 3, name: 'sindhu' }],
     onChange: this.handleChange,
@@ -55,5 +62,12 @@ export class EmployeeFormComponent implements OnInit {
       this.gender = data;
     });
     this.id = fieldInput.empId;
+    this.firstName = fieldInput.firstName;
+    this.lastName = fieldInput.lastName;
+    this.dob = fieldInput.dob;
+    this.email = fieldInput.email;
+    this.phoneNo = fieldInput.phoneNo;
+    this.commAddress = fieldInput.comm_address;
+    this.perAddress = fieldInput.per_address;
   }
 }

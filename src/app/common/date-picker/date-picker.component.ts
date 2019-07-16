@@ -17,7 +17,6 @@ import { Component, OnInit, Input } from '@angular/core';
   styles: [`
   .inputDateContainer{
     display:grid;
-    row-gap: 10px;
     width: 100%;
     position: relative;
   }
@@ -29,9 +28,6 @@ import { Component, OnInit, Input } from '@angular/core';
     background:#f1f2f5;
     border-radius:5px;
     outline:none;
-   };
-   .inputDate::-webkit-inner-spin-button {
-    -webkit-appearance: none;
    };
 }
 `]
