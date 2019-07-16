@@ -16,21 +16,22 @@ export class EmployeeComponent implements OnInit {
   constructor(private store: Store<AppState>, private employeeService: EmployeeService) { }
 
   ngOnInit() {
-      this.employeeService.getEmployee().subscribe(data => {
+    this.employeeService.getEmployee().subscribe(data => {
       let returnObject = {};
       this.employeeList = _.map(data, item => {
+        // tslint:disable-next-line:no-string-literal
         returnObject = _.pick(item, ['profilePic', 'firstName', 'email', 'phoneNo', 'isActive']);
         // tslint:disable-next-line:no-string-literal
         if (returnObject['profilePic']) {
           // tslint:disable-next-line:no-string-literal
-          returnObject['profilePic'] = '<img src=' + returnObject['profilePic'] + ' >';
+          returnObject['profilePic'] = '<img src=' + returnObject['profilePic'] + ' class="pic">';
+          // tslint:disable-next-line:no-string-literal
         } else {
           // tslint:disable-next-line:no-string-literal
           returnObject['profilePic'] = '<span>' + item.firstName[0] + item.lastName[0] + '</span>';
         }
         return returnObject;
       });
-      console.log(this.employeeList);
     });
   }
   add() {
