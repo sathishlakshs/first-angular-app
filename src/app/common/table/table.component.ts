@@ -7,7 +7,13 @@ import * as _ from 'lodash';
     <div class="col col-12 fs13">
       <div class="tableBodyDefault tr flex pr10 pl10 pb18 pt18"  *ngFor = "let row of data">
         <div *ngFor = "let key of objectKeys(row);index as i" [ngStyle]="ngWidthStyle(key, i)">
-          {{ row[key] }}
+          <span *ngIf="isDom( row[key] ); then domBlock; else normalBlock"></span>
+    <ng-template #domBlock>
+      <span [innerHTML]="row[key]"></span>
+      </ng-template>
+  <ng-template #normalBlock>
+  <span>{{ row[key] }}</span>
+  </ng-template>
         </div>
         <div *ngIf="isEditRequire; then editBlock" ></div>
         <ng-template #editBlock>
@@ -119,5 +125,13 @@ export class TableComponent implements OnInit {
       this.evenWidth = (1 / this.objectLength * 100) - (this.evenlyMinus * this.totalExpectedSpace);
     }
     return returnObject;
+  }
+
+  isDom(value) {
+    if (value[0] === '<' ) {
+      console.log(value[0]);
+      return true;
+    }
+    return false;
   }
 }

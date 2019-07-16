@@ -16,7 +16,7 @@ export class EmployeeComponent implements OnInit {
   constructor(private store: Store<AppState>, private employeeService: EmployeeService) { }
 
   ngOnInit() {
-    this.employeeService.getEmployee().subscribe(data => {
+      this.employeeService.getEmployee().subscribe(data => {
       let returnObject = {};
       this.employeeList = _.map(data, item => {
         returnObject = _.pick(item, ['profilePic', 'firstName', 'email', 'phoneNo', 'isActive']);
