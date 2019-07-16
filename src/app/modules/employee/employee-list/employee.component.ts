@@ -23,7 +23,7 @@ export class EmployeeComponent implements OnInit {
         // tslint:disable-next-line:no-string-literal
         if (returnObject['profilePic']) {
           // tslint:disable-next-line:no-string-literal
-          returnObject['profilePic'] = '<img src=' + returnObject['profilePic'] + '/>';
+          returnObject['profilePic'] = '<img src=' + returnObject['profilePic'] + ' >';
         } else {
           // tslint:disable-next-line:no-string-literal
           returnObject['profilePic'] = '<span>' + item.firstName[0] + item.lastName[0] + '</span>';
