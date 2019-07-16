@@ -27,10 +27,19 @@ constructor(private store: Store<AppState>, private customerService: CustomerSer
       let returnObject = {};
       // tslint:disable-next-line:no-string-literal
        returnObject['companyName'] = _.pick(item, ['name']).name;
+       returnObject = {...returnObject, ... _.pick(item, ['id'])};
        returnObject = {...returnObject, ... _.pick(_.find(item.contactPersons, {isSPOC: true}), ['name', 'emailId', 'phoneNumber'])};
        return returnObject;
  });
   });
+  }
+
+  getDeleteId(id: number) {
+    console.log(id);
+  }
+
+  getEditableId(id: number) {
+    console.log('editable', id);
   }
 }
 
