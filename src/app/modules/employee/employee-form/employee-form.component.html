@@ -1,20 +1,33 @@
-<div class="col-12 flex wrap">
-    <div class="clm - 12 containerUpload">
-        <div class="imgPreview">
-
-
+<div>
+    <div class="col-12 flex spbtw p0">
+        <div class="containerUpload">
+            <div class="imgPreview">
+                <img [src]='imgURL' alert="profileImg" />
+            </div>
+            <div class="choosefileContainerUpload">
+                <div class="chooseFileUpload">
+                    <span><button class="uploadButton">Upload</button></span>
+                    <input class="fileInput" ref="fileField" type="file" accept="jpeg"
+                        (change)="handleFileInput($event.target.files)">
+                </div>
+            </div>
 
         </div>
-        <div class="choosefileContainerUpload">
-            <div class="chooseFileUpload">
-                <span><button class="uploadButton">Upload</button></span>
-                <input class="fileInput" ref="fileField" type="file" accept="jpeg" />
+        <div class="genderContainer">
+            <label>Gender</label>
+            <div class="genders mb10">
+                <span *ngFor="let item of gender" (click)="handleGenders(item.id)" [ngStyle]="genderMatch(item.id)">
+                    {{item.name}}
+                </span>
+
             </div>
         </div>
-
     </div>
-    <app-input [props]="props"></app-input>
-    <app-date-picker [props]="props"></app-date-picker>
-
-
+    <div class="col-12 flex spbtw wrap">
+        <app-input [props]="id"></app-input>
+    </div>
+    <div class="middle mt10">
+        <button class="cancel pointer" data-dismiss="modal" type="submit">Cancel</button>
+        <button class="add pointer" type="submit">Add</button>
+    </div>
 </div>

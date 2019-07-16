@@ -17,7 +17,6 @@ import { Component, OnInit, Input } from '@angular/core';
   styles: [`
   .inputFieldContainer{
     display:grid;
-    row-gap: 10px;
     width: 100%;
     position: relative;
   }

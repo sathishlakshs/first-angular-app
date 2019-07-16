@@ -1,0 +1,12 @@
+{
+  "empId": {
+    "name": "attandance_id",
+    "type": "number",
+    "placeholder": "enter your id",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Employee Id"
+  }
+}
