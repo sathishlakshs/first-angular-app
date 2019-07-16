@@ -4,10 +4,10 @@ import { Component, OnInit, Input } from '@angular/core';
   selector: 'app-search-box',
   template: `
   <div class="relative searchInputContainer">
-    <input class="searchInput" value={{props.value}} (change)="props.onChange" 
+    <input class="searchInput" value={{props.value}} (change)="props.onChange"
     placeholder="{{props.placeholder}}"/>
-    <span class="absolute top10 right0"><img alt="virdhi_logo" src="assets/svg/magnify.svg"class="searchIcon" ></span>
-</div>    
+    <span class="absolute top10 right0"><img alt="" src="assets/svg/magnify.svg"class="searchIcon" ></span>
+</div>
   `,
   styles: [
     `.searchInput {
@@ -45,7 +45,7 @@ export class SearchBoxComponent implements OnInit {
     onChange: any,
     errorMsg: string,
     class: string,
-  }
+  };
   constructor() {
    }
 

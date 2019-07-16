@@ -16,8 +16,11 @@ body {
   color: red;
 }
 
-.center {
-  text-align: center !important;
+.alignCenter {
+  align-items: center;
+}
+.spbtw {
+  justify-content: space-between;
 }
 
 nav a:visited,
@@ -62,7 +65,7 @@ nav a.active {
   align-items: center;
   justify-content: center;
 }
-.h64{
+.h64 {
   height: 64px;
 }
 
