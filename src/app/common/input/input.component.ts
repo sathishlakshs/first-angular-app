@@ -5,7 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
   template: `
   <div class="inputFieldContainer ">
      <label>{{props.label}}</label>
-     <input type={{props.type}} placeholder={{props.placeholder}} value={{props.value}} 
+     <input type={{props.type}} placeholder={{props.placeholder}} value={{props.value}}
      class="inputFiled"
      (change)="onChanges($event)"
      name={{props.name}}
@@ -31,35 +31,33 @@ import { Component, OnInit, Input } from '@angular/core';
     outline:none;
 
   }`
-
-
 ]
- 
+
 })
 export class InputComponent implements OnInit {
   @Input() props: {
     name: string,
     type: string,
     placeholder: string,
-    value:string,
-    onChange:any,
+    value: string,
+    onChange: any,
     errorMsg: string,
     isMandatory: boolean,
     isDisabled: boolean,
     label: string,
-    class:string,
-  }
+    class: string,
+  };
 
 
 
   constructor() { }
 
   ngOnInit() {
-    let { isDisabled } = this.props;
+    const { isDisabled } = this.props;
     this.props.isDisabled = !isDisabled ? false : isDisabled;
   }
   onChanges = (e) => {
-    console.log("hai");
+    console.log('hai');
   }
 
 }

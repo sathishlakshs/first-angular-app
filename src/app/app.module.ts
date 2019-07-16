@@ -13,6 +13,7 @@ import { SelectBoxComponent } from './common/select-box/select-box.component';
 import { CommonModule } from '@angular/common';
 import { DatePickerComponent } from './common/date-picker/date-picker.component';
 import { HeaderComponent } from './common/header/header.component';
+import { SimpleModalModule } from 'ngx-simple-modal';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HeaderComponent } from './common/header/header.component';
     AppRoutingModule,
     CommonModule,
     StoreModule.forRoot({ customerState: customerReducer }),
-    HttpClientModule
+    HttpClientModule,
+    SimpleModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]
