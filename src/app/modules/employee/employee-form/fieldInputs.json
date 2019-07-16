@@ -1,0 +1,81 @@
+{
+  "empId": {
+    "name": "attandance_id",
+    "type": "number",
+    "placeholder": "Enter your EmployeeId",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Employee Id"
+  },
+  "firstName": {
+    "name": "firstName",
+    "type": "text",
+    "placeholder": "Enter First Name",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "First Name"
+  },
+  "lastName": {
+    "name": "lastName",
+    "type": "text",
+    "placeholder": "Enter Last Name",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Last Name"
+  },
+  "dob": {
+    "name": "dob",
+    "placeholder": "Enter Date of Birth",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "DOB",
+    "maxDate": "12/12/2000",
+    "minDate": "1/1/1700"
+  },
+  "email": {
+    "name": "email",
+    "type": "email",
+    "placeholder": "Enter Email",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Email"
+  },
+  "phoneNo": {
+    "name": "phoneNo",
+    "type": "number",
+    "placeholder": "Enter PhoneNumber",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Phine"
+  },
+  "comm_address": {
+    "name": "comm_address",
+    "placeholder": "Enter Communcation address",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Communication address"
+  },
+  "per_address": {
+    "name": "per_address",
+    "placeholder": " Enter Permanent address",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Permanent address"
+  }
+}

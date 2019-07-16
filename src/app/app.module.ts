@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { DatePickerComponent } from './common/date-picker/date-picker.component';
 import { HeaderComponent } from './common/header/header.component';
 import { SimpleModalModule } from 'ngx-simple-modal';
+import { TextareaComponent } from './common/textarea/textarea.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SimpleModalModule } from 'ngx-simple-modal';
     SearchBoxComponent,
     SelectBoxComponent,
     DatePickerComponent,
-    HeaderComponent
+    HeaderComponent,
+    TextareaComponent
   ],
   imports: [
     BrowserModule,

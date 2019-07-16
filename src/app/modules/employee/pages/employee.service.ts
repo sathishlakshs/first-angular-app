@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Customer } from 'src/app/model/customer.model';
 import { Observable, throwError as observableThrowError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-
+import { Employee } from 'src/app/model/employee.model';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -13,16 +12,16 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerService {
-  readonly GET_CUSTOMER_URL = 'http://13.233.174.131:9000/customers';
-  gets: any;
+export class EmployeeService {
+  readonly GET_GENDER = 'http://13.233.174.131:9000/gender';
+
 
   constructor(private http: HttpClient) { }
-  getCustomers(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(this.GET_CUSTOMER_URL, httpOptions).pipe(catchError(this.errorHandling));
+  getGender(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(this.GET_GENDER, httpOptions).pipe(catchError(this.errorHandling));
   }
-
   errorHandling(error: HttpErrorResponse) {
     return observableThrowError(error.message || 'server error');
   }
+
 }

@@ -117,7 +117,9 @@ nav a.active {
 .col-12 {
   width: 12/12 * 100%;
 }
-
+.p0 {
+  padding: 0px;
+}
 .p5 {
   padding: 5px;
 }
@@ -631,4 +633,45 @@ nav a.active {
 }
 .right0 {
   right: 0px;
+}
+.pointer {
+  cursor: pointer;
+}
+
+.cancel {
+  border: 1px solid red;
+  height: 40px;
+  width: 160px;
+  background: transparent;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #979797;
+  margin-right: 56px;
+  outline: none;
+}
+.add {
+  height: 40px;
+  width: 160px;
+  background: transparent;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background: #c23616;
+  border: none;
+  font-weight: 500;
+  outline: none;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  display: none;
+  -webkit-appearance: none;
 }

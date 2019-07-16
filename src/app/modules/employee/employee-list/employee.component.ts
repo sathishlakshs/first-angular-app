@@ -12,8 +12,8 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit() {
   }
-  add(){
-    this.openForm=!this.openForm;
+  add() {
+    this.openForm = !this.openForm;
   }
 
 }
