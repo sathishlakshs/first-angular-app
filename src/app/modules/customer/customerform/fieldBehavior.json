@@ -1,0 +1,81 @@
+{
+  "name": {
+    "name": "name",
+    "type": "text",
+    "placeholder": "enter the company name",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Company Name"
+  },
+  "typeOfCompany": {
+    "name": "type_of_company",
+    "type": "text",
+    "placeholder": "enter the company type",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Company Type"
+  },
+  "currencyType": {
+    "name": "currency",
+    "type": "text",
+    "placeholder": "select currency type",
+    "value": 0,
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Currency Type",
+    "options": [
+      { "id": 1, "name": "INR", "isDisabled": false },
+      { "id": 2, "name": "currency", "isDisabled": false }
+    ]
+  },
+  "countryId": {
+    "name": "countryId",
+    "type": "text",
+    "placeholder": "select your country",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Country"
+  },
+  "emailId": {
+    "name": "emailId",
+    "type": "text",
+    "placeholder": "enter the email id",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Email"
+  },
+  "address": {},
+  "website": {
+    "name": "website",
+    "type": "text",
+    "placeholder": "enter the company website",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Website"
+  },
+  "GST": {},
+  "pan": {},
+  "NDA": {},
+  "MSA": {},
+  "contactPersonsName": {},
+  "contactPersonsEmailId": {},
+  "contactPersonsPhoneNumber": {},
+  "contactPersonsCommunicationId": {},
+  "contactPersonsCommunicationTypeId": {},
+  "contactPersonsIsSPOC": {},
+  "customerSOWsowNumber": {},
+  "customerSOWsowTitle": {},
+  "customerSOWsowFile": {},
+  "customerSOWerrorMsg": {}
+}
