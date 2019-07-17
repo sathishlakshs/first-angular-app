@@ -10,7 +10,8 @@ import { Employee } from 'src/app/model/employee.model';
   styleUrls: ['./employee-form.component.scss']
 })
 export class EmployeeFormComponent implements OnInit {
-  public imagePath;
+  @Input() empolyeePropsForm: any;
+  public imagePath: any;
   imgURL: any = 'assets/svg/sample.jpg';
   public fileToUpload: File = null;
   public profilePic = 'assets/svg/sample.jpg';
@@ -28,7 +29,7 @@ export class EmployeeFormComponent implements OnInit {
   public commAddress: any;
   public perAddress: any;
   public employeeForm: Employee = {
-    companyId: 0,
+    companyId: 1,
     attandance_id: 0,
     gender: 0,
     firstName: '',
@@ -43,24 +44,26 @@ export class EmployeeFormComponent implements OnInit {
   };
   public gender: { id: number, name: string }[] = [];
   public genderId: number;
+  public objectKeys = Object.keys;
   constructor(private store: Store<AppState>, private employeeService: EmployeeService) { }
+  // tslint:disable-next-line:use-lifecycle-interface
+  ngOnChanges() {
+    this.employeeForm = this.empolyeePropsForm;
+    for (const key of this.objectKeys(fieldInput)) {
+      fieldInput[key].value = this.employeeForm[key];
+    }
+    this.imgURL = this.empolyeePropsForm.profilePic;
+    this.genderId = this.empolyeePropsForm.gender;
+  }
   ngOnInit() {
-
     this.employeeService.getGender().subscribe((data: any[]) => {
       this.gender = data;
     });
-    // tslint:disable-next-line:no-string-literal
-    fieldInput.empId['onChange'] = this.handleChange;
-    fieldInput.firstName['onChange'] = this.handleChange;
-    fieldInput.lastName['onChange'] = this.handleChange;
-    fieldInput.dob['onChange'] = this.handleChange;
-    fieldInput.email['onChange'] = this.handleChange;
-    fieldInput.phoneNo['onChange'] = this.handleChange;
-    fieldInput.comm_address['onChange'] = this.handleChange;
-    fieldInput.per_address['onChange'] = this.handleChange;
+    for (const key of this.objectKeys(fieldInput)) {
+      fieldInput[key].onChange = this.handleChange;
+    }
 
-
-    this.id = fieldInput.empId;
+    this.id = fieldInput.attandance_id;
     this.firstName = fieldInput.firstName;
     this.lastName = fieldInput.lastName;
     this.dob = fieldInput.dob;
@@ -75,11 +78,13 @@ export class EmployeeFormComponent implements OnInit {
     } else {
       this.employeeForm[name] = value;
     }
-    console.log(this.employeeForm);
   }
   handleGenders(id: number) {
     this.genderId = id;
-
+    this.handleChange('gender', id);
+  }
+  handleAdd = () => {
+    console.log(this.employeeForm);
   }
   genderMatch(id: number) {
     if (id === this.genderId) {
@@ -91,12 +96,13 @@ export class EmployeeFormComponent implements OnInit {
     return {};
   }
 
-  handleFileInput(files: FileList) {
+  handleFileInput = (files: any) => {
     const reader = new FileReader();
     this.imagePath = files;
     reader.readAsDataURL(files[0]);
     reader.onload = () => {
       this.imgURL = reader.result;
     };
+    this.handleChange('profilePic', files);
   }
 }

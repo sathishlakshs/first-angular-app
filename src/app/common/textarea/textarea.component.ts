@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
       <label>{{props.label}}</label>
       <textarea  placeholder={{props.placeholder}} value={{props.value}}
       class="textarea"
-      (change)="onChanges($event)"
+      (input)="props.onChange(props.name,$event.target.value)"
       name={{props.name}}
       [disabled]="props.isDisabled"
       ></textarea>
