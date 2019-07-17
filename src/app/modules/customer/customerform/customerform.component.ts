@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import fieldBehavior from './fieldBehavior.json';
+import { Store } from '@ngrx/store';
+import * as CustomerActions from '../../../../store/actions/customer.action';
+import { AppState } from '../../../../store/reducers';
 
 @Component({
   selector: 'app-customerform',
@@ -30,7 +33,7 @@ export class CustomerformComponent implements OnInit {
   public customerSOWerrorMsg: any;
   public objectKeys = Object.keys;
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
     for (const key of this.objectKeys(fieldBehavior)) {
@@ -60,7 +63,7 @@ export class CustomerformComponent implements OnInit {
   }
 
   handleChange = (name: string, value: any) => {
-    console.log(name, value);
+    this.store.dispatch(new CustomerActions.HandleChange({name, value}));
   }
 
 }
