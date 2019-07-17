@@ -11,7 +11,6 @@
   },
   "typeOfCompany": {
     "name": "type_of_company",
-    "type": "text",
     "placeholder": "enter the company type",
     "value": "",
     "errorMsg": "",
@@ -53,7 +52,16 @@
     "isDisabled": false,
     "label": "Email"
   },
-  "address": {},
+  "address": {
+    "name": "address",
+    "placeholder": "enter the address",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": false,
+    "isDisabled": false,
+    "label": "Address",
+    "class": ""
+  },
   "website": {
     "name": "website",
     "type": "text",
@@ -68,11 +76,55 @@
   "pan": {},
   "NDA": {},
   "MSA": {},
-  "contactPersonsName": {},
-  "contactPersonsEmailId": {},
-  "contactPersonsPhoneNumber": {},
-  "contactPersonsCommunicationId": {},
-  "contactPersonsCommunicationTypeId": {},
+  "contactPersonsName": {
+    "name": "name",
+    "type": "text",
+    "placeholder": "enter the contact name",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Contact Name"
+  },
+  "contactPersonsEmailId": {
+    "name": "emailId",
+    "type": "text",
+    "placeholder": "enter the email id",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Email"
+  },
+  "contactPersonsPhoneNumber": {
+    "name": "phoneNumber",
+    "type": "number",
+    "placeholder": "enter the mobile number",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Contact Number"
+  },
+  "contactPersonsCommunicationId": {
+    "name": "communicationId",
+    "type": "number",
+    "placeholder": "enter the mobile number",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Communication Id"
+  },
+  "contactPersonsCommunicationTypeId": {
+    "name": "communicationTypeId",
+    "placeholder": "select type communication type",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Commubication Type"
+  },
   "contactPersonsIsSPOC": {},
   "customerSOWsowNumber": {},
   "customerSOWsowTitle": {},

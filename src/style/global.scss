@@ -1,3 +1,8 @@
+.border-Container {
+  border: 1px solid #dadada;
+  border-radius: 5px;
+}
+
 body {
   margin: 0 !important;
   padding: 0 !important;
@@ -81,40 +86,40 @@ nav a.active {
   float: left;
 }
 
-.col-1 {
+.clm-1 {
   width: 1/12 * 100%;
 }
-.col-2 {
+.clm-2 {
   width: 2/12 * 100%;
 }
-.col-3 {
+.clm-3 {
   width: 3/12 * 100%;
 }
-.col-4 {
+.clm-4 {
   width: 4/12 * 100%;
 }
-.col-5 {
+.clm-5 {
   width: 5/12 * 100%;
 }
-.col-6 {
+.clm-6 {
   width: 6/12 * 100%;
 }
-.col-7 {
+.clm-7 {
   width: 7/12 * 100%;
 }
-.col-8 {
+.clm-8 {
   width: 8/12 * 100%;
 }
-.col-9 {
+.clm-9 {
   width: 9/12 * 100%;
 }
-.col-10 {
+.clm-10 {
   width: 10/12 * 100%;
 }
-.col-11 {
+.clm-11 {
   width: 11/12 * 100%;
 }
-.col-12 {
+.clm-12 {
   width: 12/12 * 100%;
 }
 .p0 {

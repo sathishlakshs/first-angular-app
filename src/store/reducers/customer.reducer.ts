@@ -22,7 +22,7 @@ export const initialState = {
                     emailId: '',
                     phoneNumber: '',
                     communicationId: '',
-                    communicationTypeId: '',
+                    communicationTypeId: 0,
                     isSPOC: true,
                     isDeleted: false,
                     errorMsg: '',
@@ -43,10 +43,14 @@ export const initialState = {
         country: [],
 };
 
-export const customerReducer = (state: Customer = initialState.form, action: CustomerActions.Actions) => {
+export const customerReducer = (state: any = initialState, action: CustomerActions.Actions) => {
     switch (action.type) {
-        case CustomerActions.CUSTOMER_ONCHANGE:
-            return { ...state, [action.payload.name]: action.payload.value };
+        case CustomerActions.CUSTOMER_FORM_ONCHANGE:
+            return { ...state, form: { ...state.form, [action.payload.name]: action.payload.value }};
+        case CustomerActions.CUSTOMER_FORM_CHANGE:
+            return { ...state, form: action.payload };
+            case CustomerActions.CUSTOMER_ONCHANGE:
+            return { ...state,  [action.payload.name]: action.payload.value };
             default:
                 return state;
     }

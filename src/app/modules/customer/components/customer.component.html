@@ -1,12 +1,13 @@
-<div><app-customerform></app-customerform></div>
-<div *ngIf="custs.length > 0; then tableComponent"></div>
+<div><app-customerform [customer]="customer"></app-customerform></div>
+<div *ngIf="customers.length > 0; then tableComponent"></div>
 <ng-template #tableComponent>
     <app-table [enableHover] = "true" 
     [isEditRequire]="true" 
     [isDeleteRequire]="true" 
     [spaceNeedColumn] = "[]" 
-  [data] = "custs"
+  [data] = "customers"
   [getEditableId] = "getEditableId"
   [getDeleteId] = "getDeleteId"
+  [dataTarget]="'#customerFormModal'"
   ></app-table>
   </ng-template>

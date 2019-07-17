@@ -1,8 +1,8 @@
 <div class="container">
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#customerFormModal">
       Add Customer
     </button>
-    <div class="modal" id="myModal">
+    <div class="modal" id="customerFormModal">
       <div class="modal-dialog customer-form-modal">
         <div class="modal-content">
           <div class="modal-header">
@@ -10,39 +10,80 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body">
-            <div class="flex col-12">
-                <div class="col-6">
+            <div class="flex clm-12">
+                <div class="clm-6">
                     <app-input [props] = "name"
                     ></app-input>
                 </div>
-                <div class="col-6">
+                <div class="clm-6">
                         <app-input [props] = "typeOfCompany"
                         ></app-input>
                     </div>
                 </div> 
-                <div class="flex col-12">
-                        <div class="col-6">
+                <div class="flex clm-12">
+                        <div class="clm-6">
                             <app-input [props] = "countryId"
                             ></app-input>
                         </div>
-                        <div class="col-6">
+                        <div class="clm-6">
                                 <app-select-box [props] = "currencyType"
                                 ></app-select-box>
                             </div>
                         </div> 
-                        <div class="flex col-12">
-                                <div class="col-6">
+                        <div class="flex clm-12">
+                                <div class="clm-6">
                                     <app-input [props] = "website"
                                     ></app-input>
                                 </div>
-                                <div class="col-6">
+                                <div class="clm-6">
                                         <app-input [props] = "emailId"
                                         ></app-input>
                                     </div>
                                 </div> 
-                                <div class="col col-12">
-                                    address
-                            </div> 
+                                <div class="clm-12">
+                                    <div class="clm-12">
+                                    <app-textarea [props] = "address"></app-textarea>
+                                    </div>
+                              </div> 
+                            <div *ngFor = "let item of contactPersons;index as i">
+                              <div class = "flex p10 border-Container">
+                                <div class = " clm-11" >
+                                  <div class=" flex clm-12">
+                                  <div class="clm-6">
+                                      <app-input [props] = "item.name"
+                                      ></app-input>
+                                  </div>
+                                  <div class="clm-6">
+                                      <app-input [props] = "item.phoneNumber"
+                                      ></app-input>
+                                  </div>
+                                </div>
+                                <div class="flex clm-12">
+                                    <div class="clm-6">
+                                        <app-input [props] = "item.emailId"
+                                        ></app-input>
+                                    </div>
+                                    <div class="clm-6">
+                                        <app-select-box [props] = "item.communicationTypeId"
+                                        ></app-select-box>
+                                    </div>
+                                  </div>
+                                  <div>
+                                      <div class="clm-6">
+                                          <app-input [props] = "item.communicationId"
+                                          ></app-input>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="clm-1 middle">
+                                    <span *ngIf="i !== 0; then deleteButton" ></span>
+                                    <ng-template #deleteButton>
+                                      <span class="red" (click)="removeContactPerson(i)">delete</span>
+                                      </ng-template>
+                                  <span class="xtra-List-AddButton" (click)="addContactPerson()">+</span>
+                                </div>
+                              </div>
+                            </div>
           </div>
           <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
