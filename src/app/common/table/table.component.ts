@@ -149,7 +149,6 @@ export class TableComponent implements OnInit {
 
   isDom(value) {
     if (value[0] === '<' ) {
-      console.log(value[0]);
       return true;
     }
     return false;
