@@ -1,4 +1,5 @@
 export interface Customer {
+    id: number;
         name: string;
         type_of_company: string;
             countryId: string;
@@ -15,7 +16,7 @@ export interface Customer {
             emailId: string;
             phoneNumber: string;
             communicationId: string;
-            communicationTypeId: string;
+            communicationTypeId: number;
             isSPOC: boolean;
             isDeleted: boolean;
             errorMsg: string }[];

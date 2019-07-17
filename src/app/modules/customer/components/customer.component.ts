@@ -4,6 +4,7 @@ import { AppState } from 'src/store/reducers';
 import { Observable } from 'rxjs';
 import { Customer } from 'src/app/model/customer.model';
 import { CustomerService } from '../pages/customer.service';
+import * as CustomerActions from '../../../../store/actions/customer.action';
 import * as _ from 'lodash';
 
 @Component({
@@ -13,19 +14,20 @@ import * as _ from 'lodash';
 })
 export class CustomerComponent implements OnInit {
 public title: string = 'customer';
-public customers: Observable<Customer[]>;
-public custs: any[] = [];
+public customers: any[] = [];
+public customer: Customer;
 
 constructor(private store: Store<AppState>, private customerService: CustomerService) {
-  this.customers = store.select('customerState');
-  this.customers.subscribe(state => console.log(state));
+  store.select('customerState').subscribe(state => {
+    this.customer = state.form;
+    console.log(this.customer);
+   });
 }
 
   ngOnInit() {
   this.customerService.getCustomers().subscribe(data => {
-    this.custs = _.map(data, item => {
+    this.customers = _.map(data, item => {
       let returnObject = {};
-      // tslint:disable-next-line:no-string-literal
        returnObject['companyName'] = _.pick(item, ['name']).name;
        returnObject = {...returnObject, ... _.pick(item, ['id'])};
        returnObject = {...returnObject, ... _.pick(_.find(item.contactPersons, {isSPOC: true}), ['name', 'emailId', 'phoneNumber'])};
@@ -38,8 +40,11 @@ constructor(private store: Store<AppState>, private customerService: CustomerSer
     console.log(id);
   }
 
-  getEditableId(id: number) {
-    console.log('editable', id);
+  getEditableId = (id: number) => {
+    this.customerService.getCustomer(id).subscribe(data => {
+      this.store.dispatch(new CustomerActions.FormChange(data));
+      this.store.dispatch(new CustomerActions.HandleChange({name: 'willModifyId', value: data.id}));
+    });
   }
 }
 
