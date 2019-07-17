@@ -28,10 +28,14 @@ export class CustomerformComponent implements OnInit {
   public customerSOWsowTitle: any;
   public customerSOWsowFile: any;
   public customerSOWerrorMsg: any;
+  public objectKeys = Object.keys;
 
   constructor() { }
 
   ngOnInit() {
+    for (const key of this.objectKeys(fieldBehavior)) {
+    fieldBehavior[key].onChange = this.handleChange;
+    }
     this.name = fieldBehavior.name;
     this.currencyType = fieldBehavior.currencyType;
     this.typeOfCompany = fieldBehavior.typeOfCompany;
@@ -53,6 +57,10 @@ export class CustomerformComponent implements OnInit {
     this.customerSOWsowTitle = fieldBehavior.customerSOWsowTitle;
     this.customerSOWsowFile = fieldBehavior.customerSOWsowFile;
     this.customerSOWerrorMsg = fieldBehavior.customerSOWerrorMsg;
+  }
+
+  handleChange = (name: string, value: any) => {
+    console.log(name, value);
   }
 
 }
