@@ -20,7 +20,7 @@ export class EmployeeComponent implements OnInit {
       let returnObject = {};
       this.employeeList = _.map(data, item => {
         // tslint:disable-next-line:no-string-literal
-        returnObject = _.pick(item, ['profilePic', 'firstName', 'email', 'phoneNo', 'isActive']);
+        returnObject = _.pick(item, ['profilePic', 'firstName', 'email', 'phoneNo', 'isActive', 'id']);
         // tslint:disable-next-line:no-string-literal
         if (returnObject['profilePic']) {
           // tslint:disable-next-line:no-string-literal
@@ -36,6 +36,14 @@ export class EmployeeComponent implements OnInit {
   }
   add() {
     this.openForm = !this.openForm;
+  }
+
+  getDeleteId(id: number) {
+    console.log(id);
+  }
+
+  getEditableId(id: number) {
+    console.log('editable', id);
   }
 
 }

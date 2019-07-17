@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-input',
@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
      <label>{{props.label}}</label>
      <input type={{props.type}} placeholder={{props.placeholder}} value={{props.value}}
      class="inputFiled"
-     (change)="props.onChange(props.name,$event.target.value)"
+    (input)="props.onChange(props.name,$event.target.value)"
      name={{props.name}}
      [disabled]="props.isDisabled"
      >
@@ -30,7 +30,7 @@ import { Component, OnInit, Input } from '@angular/core';
     outline:none;
     width: 100%;
   }`
-]
+  ]
 
 })
 export class InputComponent implements OnInit {
@@ -46,7 +46,7 @@ export class InputComponent implements OnInit {
     label: string,
     class: string,
   };
-
+  @Output() public value;
 
 
   constructor() { }
@@ -54,6 +54,10 @@ export class InputComponent implements OnInit {
   ngOnInit() {
     const { isDisabled } = this.props;
     this.props.isDisabled = !isDisabled ? false : isDisabled;
+  }
+
+  myfunction(value) {
+    console.log('hai');
   }
 
 }

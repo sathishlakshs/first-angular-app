@@ -2,13 +2,11 @@
 <button type="button" data-toggle="modal" data-target="#exampleModalCenter">
     Add Employee
 </button>
-<ng-template [ngIf]="employeeList.length > 0" >
-    <app-table [enableHover] = "true" 
-    [isEditRequire]="true" 
-    [isDeleteRequire]="true" 
-    [spaceNeedColumn] = "[]" 
-  [data] = "employeeList"></app-table>
-  </ng-template>
+<ng-template [ngIf]="employeeList.length > 0">
+    <app-table [enableHover]="true" [isEditRequire]="true" [isDeleteRequire]="true" [spaceNeedColumn]="[]"
+        [data]="employeeList" [getEditableId]="getEditableId" [getDeleteId]="getDeleteId">
+    </app-table>
+</ng-template>
 <!-- <app-table [enableHover]="true" [isEditRequire]="true" [isDeleteRequire]="true" [spaceNeedColumn]="[]"
     [data]="employeeList">
 </app-table> -->

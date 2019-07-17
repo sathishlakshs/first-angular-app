@@ -43,13 +43,43 @@ export class EmployeeFormComponent implements OnInit {
   };
   public gender: { id: number, name: string }[] = [];
   public genderId: number;
-  handleChange(name: any, value: any) {
+  constructor(private store: Store<AppState>, private employeeService: EmployeeService) { }
+  ngOnInit() {
+
+    this.employeeService.getGender().subscribe((data: any[]) => {
+      this.gender = data;
+    });
+    // tslint:disable-next-line:no-string-literal
+    fieldInput.empId['onChange'] = this.handleChange;
+    fieldInput.firstName['onChange'] = this.handleChange;
+    fieldInput.lastName['onChange'] = this.handleChange;
+    fieldInput.dob['onChange'] = this.handleChange;
+    fieldInput.email['onChange'] = this.handleChange;
+    fieldInput.phoneNo['onChange'] = this.handleChange;
+    fieldInput.comm_address['onChange'] = this.handleChange;
+    fieldInput.per_address['onChange'] = this.handleChange;
+
+
+    this.id = fieldInput.empId;
+    this.firstName = fieldInput.firstName;
+    this.lastName = fieldInput.lastName;
+    this.dob = fieldInput.dob;
+    this.email = fieldInput.email;
+    this.phoneNo = fieldInput.phoneNo;
+    this.commAddress = fieldInput.comm_address;
+    this.perAddress = fieldInput.per_address;
+  }
+  handleChange = (name: any, value: any) => {
+    if (name === 'attandance_id') {
+      this.employeeForm[name] = parseInt(value, 10);
+    } else {
+      this.employeeForm[name] = value;
+    }
     console.log(this.employeeForm);
-    // this.employeeForm[name] = value;
-    // console.log(this.employeeForm);
   }
   handleGenders(id: number) {
     this.genderId = id;
+
   }
   genderMatch(id: number) {
     if (id === this.genderId) {
@@ -68,21 +98,5 @@ export class EmployeeFormComponent implements OnInit {
     reader.onload = () => {
       this.imgURL = reader.result;
     };
-  }
-  constructor(private store: Store<AppState>, private employeeService: EmployeeService) { }
-  ngOnInit() {
-    this.employeeService.getGender().subscribe((data: any[]) => {
-      this.gender = data;
-    });
-    // tslint:disable-next-line:no-string-literal
-    fieldInput.empId['onChange'] = this.handleChange;
-    this.id = fieldInput.empId;
-    this.firstName = fieldInput.firstName;
-    this.lastName = fieldInput.lastName;
-    this.dob = fieldInput.dob;
-    this.email = fieldInput.email;
-    this.phoneNo = fieldInput.phoneNo;
-    this.commAddress = fieldInput.comm_address;
-    this.perAddress = fieldInput.per_address;
   }
 }
