@@ -5,7 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
   <div class="inputDateContainer ">
      <label>{{props.label}}</label>
      <input type="date" placeholder={{props.placeholder}} value={{props.value}} class='inputDate'
-     (change)="onChanges($event)"
+     (input)="props.onChange(props.name,$event.target.value)"
      name={{props.name}}
      [disabled]="props.isDisabled"
      max={{props.maxDate}}

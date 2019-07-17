@@ -15,7 +15,7 @@ const httpOptions = {
 export class EmployeeService {
   readonly GET_GENDER = 'http://13.233.174.131:9000/gender';
   readonly GET_EMPLOYEE = 'http://13.233.174.131:9000/employees';
-
+  readonly GET_EMPLOYEEBYID = (id: number) => `http://13.233.174.131:9000/employee/${id}`;
 
   constructor(private http: HttpClient) { }
   getGender(): Observable<Employee[]> {
@@ -23,6 +23,9 @@ export class EmployeeService {
   }
   getEmployee(): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.GET_EMPLOYEE, httpOptions).pipe(catchError(this.errorHandling));
+  }
+  getEmployeeById(id: number): Observable<Employee[]> {
+    return this.http.get<Employee[]>(this.GET_EMPLOYEEBYID(id), httpOptions).pipe(catchError(this.errorHandling));
   }
   errorHandling(error: HttpErrorResponse) {
     return observableThrowError(error.message || 'server error');

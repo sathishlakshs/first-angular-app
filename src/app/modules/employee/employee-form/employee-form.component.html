@@ -8,7 +8,9 @@
                 <div class="chooseFileUpload">
                     <span><button class="uploadButton">Upload</button></span>
                     <input class="fileInput" ref="fileField" type="file" accept="jpeg"
-                        (change)="handleFileInput($event.target.files)">
+                        (change)="handleFileInput($event.target.files)"
+                         
+                        >
                 </div>
             </div>
 
@@ -52,6 +54,6 @@
     </div>
     <div class="middle mt20">
         <button class="cancel pointer" data-dismiss="modal" type="submit">Cancel</button>
-        <button class="add pointer" type="submit">Add</button>
+        <button class="add pointer" type="submit" data-dismiss="modal" (click)="handleAdd()">Add</button>
     </div>
 </div>

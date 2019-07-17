@@ -12,6 +12,7 @@ import _ from 'lodash';
 })
 export class EmployeeComponent implements OnInit {
   openForm = false;
+  public empolyeePropsForm = {};
   public employeeList: any[] = [];
   constructor(private store: Store<AppState>, private employeeService: EmployeeService) { }
 
@@ -42,8 +43,8 @@ export class EmployeeComponent implements OnInit {
     console.log(id);
   }
 
-  getEditableId(id: number) {
-    console.log('editable', id);
+  getEditableId = (id: number) => {
+    this.employeeService.getEmployeeById(id).subscribe(data => this.empolyeePropsForm = data);
   }
 
 }

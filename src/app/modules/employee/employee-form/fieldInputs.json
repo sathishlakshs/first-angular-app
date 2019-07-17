@@ -1,5 +1,5 @@
 {
-  "empId": {
+  "attandance_id": {
     "name": "attandance_id",
     "type": "number",
     "placeholder": "Enter your EmployeeId",
