@@ -3,6 +3,7 @@ import { EmployeeService } from '../pages/employee.service';
 import { AppState } from 'src/store/reducers';
 import { Store } from '@ngrx/store';
 import fieldInput from './fieldInputs.json';
+import { Employee } from 'src/app/model/employee.model';
 @Component({
   selector: 'app-employee-form',
   templateUrl: './employee-form.component.html',
@@ -26,14 +27,26 @@ export class EmployeeFormComponent implements OnInit {
   public phoneNo: any;
   public commAddress: any;
   public perAddress: any;
-  public selectProps = {
-    options: [{ id: 0, name: 'sudarshan' }, { id: 1, name: 'sathish' }, { id: 3, name: 'sindhu' }],
-    onChange: this.handleChange,
+  public employeeForm: Employee = {
+    companyId: 0,
+    attandance_id: 0,
+    gender: 0,
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNo: '',
+    dob: '',
+    comm_address: '',
+    per_address: '',
+    isActive: true,
+    profilePic: ''
   };
   public gender: { id: number, name: string }[] = [];
   public genderId: number;
-  handleChange() {
-    console.log('searched');
+  handleChange(name: any, value: any) {
+    console.log(this.employeeForm);
+    // this.employeeForm[name] = value;
+    // console.log(this.employeeForm);
   }
   handleGenders(id: number) {
     this.genderId = id;
@@ -61,6 +74,8 @@ export class EmployeeFormComponent implements OnInit {
     this.employeeService.getGender().subscribe((data: any[]) => {
       this.gender = data;
     });
+    // tslint:disable-next-line:no-string-literal
+    fieldInput.empId['onChange'] = this.handleChange;
     this.id = fieldInput.empId;
     this.firstName = fieldInput.firstName;
     this.lastName = fieldInput.lastName;

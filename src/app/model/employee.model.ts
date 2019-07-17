@@ -10,6 +10,5 @@ export interface Employee {
     comm_address: string;
     per_address: string;
     isActive: boolean;
-    isDeleted: boolean;
     profilePic: string;
 }

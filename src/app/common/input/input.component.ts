@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
      <label>{{props.label}}</label>
      <input type={{props.type}} placeholder={{props.placeholder}} value={{props.value}}
      class="inputFiled"
-     (change)="onChanges($event)"
+     (change)="props.onChange(props.name,$event.target.value)"
      name={{props.name}}
      [disabled]="props.isDisabled"
      >
@@ -29,7 +29,6 @@ import { Component, OnInit, Input } from '@angular/core';
     border-radius:5px;
     outline:none;
     width: 100%;
-
   }`
 ]
 
@@ -55,9 +54,6 @@ export class InputComponent implements OnInit {
   ngOnInit() {
     const { isDisabled } = this.props;
     this.props.isDisabled = !isDisabled ? false : isDisabled;
-  }
-  onChanges = (e) => {
-    console.log('hai');
   }
 
 }
