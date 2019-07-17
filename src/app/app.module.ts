@@ -15,6 +15,7 @@ import { DatePickerComponent } from './common/date-picker/date-picker.component'
 import { HeaderComponent } from './common/header/header.component';
 import { SimpleModalModule } from 'ngx-simple-modal';
 import { TextareaComponent } from './common/textarea/textarea.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { TextareaComponent } from './common/textarea/textarea.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     CommonModule,
     StoreModule.forRoot({ customerState: customerReducer }),

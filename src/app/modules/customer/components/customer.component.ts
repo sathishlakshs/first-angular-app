@@ -17,8 +17,8 @@ public customers: Observable<Customer[]>;
 public custs: any[] = [];
 
 constructor(private store: Store<AppState>, private customerService: CustomerService) {
-  // this.customers = store.select('customerState');
-  // this.customers.subscribe(state => console.log(state));
+  this.customers = store.select('customerState');
+  this.customers.subscribe(state => console.log(state));
 }
 
   ngOnInit() {
