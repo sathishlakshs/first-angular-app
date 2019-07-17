@@ -37,7 +37,7 @@ export class CustomerformComponent implements OnInit {
 
   ngOnInit() {
     for (const key of this.objectKeys(fieldBehavior)) {
-    fieldBehavior[key].onChange = this.handleChange;
+      fieldBehavior[key].onChange = this.handleChange;
     }
     this.name = fieldBehavior.name;
     this.currencyType = fieldBehavior.currencyType;
@@ -63,7 +63,7 @@ export class CustomerformComponent implements OnInit {
   }
 
   handleChange = (name: string, value: any) => {
-    this.store.dispatch(new CustomerActions.HandleChange({name, value}));
+    this.store.dispatch(new CustomerActions.HandleChange({ name, value }));
   }
 
 }

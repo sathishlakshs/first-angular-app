@@ -15,10 +15,14 @@ export class EmployeeComponent implements OnInit {
   public empolyeePropsForm = {};
   public employeeList: any[] = [];
   constructor(private store: Store<AppState>, private employeeService: EmployeeService) { }
-
   ngOnInit() {
+    this.getAllEmployee();
+  }
+  // tslint:disable-next-line:use-lifecycle-interface
+  getAllEmployee = () => {
     this.employeeService.getEmployee().subscribe(data => {
       let returnObject = {};
+      data.sort((a, b) => a.firstName.localeCompare(b.firstName));
       this.employeeList = _.map(data, item => {
         // tslint:disable-next-line:no-string-literal
         returnObject = _.pick(item, ['profilePic', 'firstName', 'email', 'phoneNo', 'isActive', 'id']);
