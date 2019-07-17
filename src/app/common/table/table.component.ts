@@ -6,22 +6,26 @@ import * as _ from 'lodash';
   template: `
     <div class="col col-12 fs13">
       <div class="tableBodyDefault tr flex pr10 pl10 pb18 pt18"  *ngFor = "let row of data">
-        <div *ngFor = "let key of objectKeys(row);index as i" [ngStyle]="ngWidthStyle(key, i)">
+      <div *ngFor = "let key of objectKeys(row);index as i" [ngStyle]="ngWidthStyle(key, i)">
           <span *ngIf="isDom( row[key] ); then domBlock; else normalBlock"></span>
-    <ng-template #domBlock>
-      <span [innerHTML]="row[key]"></span>
-      </ng-template>
-  <ng-template #normalBlock>
-  <span>{{ row[key] }}</span>
-  </ng-template>
+              <ng-template #domBlock>
+                <span [innerHTML]="row[key]"></span>
+                </ng-template>
+                <ng-template #normalBlock>
+                <span>{{ row[key] }}</span>
+                </ng-template>
         </div>
         <div *ngIf="isEditRequire; then editBlock" ></div>
         <ng-template #editBlock>
-          <div class="actions" [ngStyle]="ngWidthStyle('edit', isDeleteRequire ? 0 : objectLength)">EDIT</div>
+          <div class="actions"
+          [ngStyle]="ngWidthStyle('edit', isDeleteRequire ? 0 : objectLength)"
+          (click)="getId(row['id'], 'EDIT')">
+            EDIT
+          </div>
           </ng-template>
           <div *ngIf="isDeleteRequire; then deleteBlock"></div>
         <ng-template #deleteBlock>
-          <div class="actions" [ngStyle]="ngWidthStyle('delete', objectLength)">Delete</div>
+          <div class="actions" [ngStyle]="ngWidthStyle('delete', objectLength)" (click)="getId(row['id'], 'DELETE')">Delete</div>
           </ng-template>
         </div>
     </div>
@@ -59,6 +63,10 @@ export class TableComponent implements OnInit {
   public isDeleteRequire: boolean;
   @Input()
   public dat: any[];
+  @Input()
+  public getEditableId;
+  @Input()
+  public getDeleteId;
   public objectKeys = Object.keys;
   public evenWidth = 0;
   public objectLength = 0;
@@ -67,7 +75,7 @@ export class TableComponent implements OnInit {
   constructor() { }
 
  ngOnInit() {
-  this.objectLength = Object.keys(this.data[0]).length;
+  this.objectLength = Object.keys(this.data[0]).length - 1;
     const row = _.cloneDeep(this.data[0]);
     if (this.isEditRequire) {
       this.objectLength += 1;
@@ -106,6 +114,7 @@ export class TableComponent implements OnInit {
       width: 1 / this.objectLength * 100  + '%',
       textAlign: 'center'
     };
+    if (key.toLowerCase() !== 'id') {
     for (const [index, item] of this.spaceNeedColumn.entries()) {
       if (key === item.key) {
         if (item.requireSpace > 0) {
@@ -124,7 +133,18 @@ export class TableComponent implements OnInit {
     if (i >= this.objectLength - 1) {
       this.evenWidth = (1 / this.objectLength * 100) - (this.evenlyMinus * this.totalExpectedSpace);
     }
+  } else {
+    return {display: 'none'};
+  }
     return returnObject;
+  }
+
+  getId(id: number, from: string) {
+    if (from === 'EDIT') {
+      this.getEditableId(id);
+    } else {
+      this.getDeleteId(id);
+    }
   }
 
   isDom(value) {
