@@ -41,7 +41,6 @@ constructor(private store: Store<AppState>, private customerService: CustomerSer
 
   getEditableId = (id: number) => {
     this.customerService.getCustomer(id).subscribe(data => {
-      console.log(data);
       this.store.dispatch(new CustomerActions.FormChange(data));
       this.store.dispatch(new CustomerActions.HandleChange({name: 'willModifyId', value: data.id}));
     });

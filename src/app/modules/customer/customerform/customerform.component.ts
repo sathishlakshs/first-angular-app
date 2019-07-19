@@ -6,6 +6,7 @@ import { AppState } from '../../../../store/reducers';
 import { Customer } from 'src/app/model/customer.model.js';
 import { Observable } from 'rxjs';
 import * as _ from 'lodash';
+import { CustomerService } from '../pages/customer.service';
 
 @Component({
   selector: 'app-customerform',
@@ -41,7 +42,7 @@ export class CustomerformComponent implements OnInit {
   @Input()
   public customer: Customer;
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>, private customerService: CustomerService) { }
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnChanges() {
@@ -125,7 +126,15 @@ export class CustomerformComponent implements OnInit {
       this.form.contactPersons.splice(index, 1);
     }
   }
-  trial = () => {
-    console.log(this.customer);
+  save = () => {
+    this.store.select('customerState').subscribe(state => {
+      this.customerService.pushCustomer(state.form);
+     });
+  }
+
+  update = () => {
+    this.store.select('customerState').subscribe(state => {
+      this.customerService.putCustomer(state.willModifyId, state.form);
+    });
   }
 }

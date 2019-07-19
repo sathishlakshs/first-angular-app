@@ -16,6 +16,8 @@ const httpOptions = {
 export class CustomerService {
   readonly GET_CUSTOMERS_URL = 'http://13.233.174.131:9000/customers';
   readonly GET_CUSTOMER_BY_ID_URL = 'http://13.233.174.131:9000/customer/';
+  readonly POST_CUSTOMER_URL = 'http://13.233.174.131:9000/customer/';
+  readonly PUT_CUSTOMER_URL = 'http://13.233.174.131:9000/customer/';
   gets: any;
 
   constructor(private http: HttpClient) { }
@@ -25,6 +27,15 @@ export class CustomerService {
   getCustomer(id): Observable<Customer> {
     return this.http.get<Customer>(this.GET_CUSTOMER_BY_ID_URL + id, httpOptions).pipe(catchError(this.errorHandling));
   }
+
+  pushCustomer(customer): Observable<Customer> {
+    return this.http.post<Customer>(this.POST_CUSTOMER_URL, customer, httpOptions).pipe(catchError(this.errorHandling));
+  }
+
+  putCustomer(id, customer): Observable<Customer> {
+    return this.http.put<Customer>(this.PUT_CUSTOMER_URL + id, customer, httpOptions).pipe(catchError(this.errorHandling));
+  }
+
   errorHandling(error: HttpErrorResponse) {
     return observableThrowError(error.message || 'server error');
   }

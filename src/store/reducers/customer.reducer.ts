@@ -2,7 +2,7 @@ import { Customer } from 'src/app/model/customer.model';
 import * as CustomerActions from '../actions/customer.action';
 
 export const initialState = {
-        willModifyId: '',
+        willModifyId: 0,
         form: {
             name: '',
             type_of_company: '',
