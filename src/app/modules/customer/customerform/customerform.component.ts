@@ -43,11 +43,7 @@ export class CustomerformComponent implements OnInit {
   ngOnInit() {
     console.log(this.customer);
     for (const key of this.objectKeys(fieldBehavior)) {
-<<<<<<< HEAD
-      fieldBehavior[key].onChange = this.handleChange;
-=======
         fieldBehavior[key].onChange = this.handleChange;
->>>>>>> bddf0c0fb294c2a5e40f0b1cfd18fc948b5849b2
     }
     this.name = fieldBehavior.name;
     this.currencyType = fieldBehavior.currencyType;
