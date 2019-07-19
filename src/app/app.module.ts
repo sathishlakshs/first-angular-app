@@ -16,6 +16,7 @@ import { HeaderComponent } from './common/header/header.component';
 import { SimpleModalModule } from 'ngx-simple-modal';
 import { TextareaComponent } from './common/textarea/textarea.component';
 import { FormsModule } from '@angular/forms';
+import { employeeReducer } from 'src/store/reducers/employee.reducer';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     AppRoutingModule,
     CommonModule,
-    StoreModule.forRoot({ customerState: customerReducer }),
+    StoreModule.forRoot({ customerState: customerReducer, employeeState: employeeReducer }),
     HttpClientModule,
     SimpleModalModule
   ],
