@@ -30,33 +30,20 @@ export class EmployeeFormComponent implements OnInit {
   public phoneNo: any;
   public commAddress: any;
   public perAddress: any;
-  public employeeForm: Employee = {
-    companyId: 1,
-    attandance_id: 0,
-    gender: 0,
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNo: '',
-    dob: '',
-    comm_address: '',
-    per_address: '',
-    isActive: true,
-    profilePic: ''
-  };
+  public employeeForm: any;
   public gender: { id: number, name: string }[] = [];
   public genderId: number;
   public objectKeys = Object.keys;
   constructor(private store: Store<AppState>, private employeeService: EmployeeService) {
-    this.store.select('employeeState').subscribe(state => console.log(state));
+    this.store.select('employeeState').subscribe(state => this.employeeForm = state.employeeForm);
   }
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnChanges() {
-    this.employeeForm = this.empolyeePropsForm;
+    this.employeeForm = this.objectKeys(this.empolyeePropsForm).length > 0 ? this.empolyeePropsForm : this.employeeForm;
     for (const key of this.objectKeys(fieldInput)) {
       fieldInput[key].value = this.employeeForm[key];
     }
-    this.imgURL = this.empolyeePropsForm.profilePic;
+    this.imgURL = this.empolyeePropsForm.profilePic ? this.empolyeePropsForm.profilePic : this.imgURL;
     this.genderId = this.empolyeePropsForm.gender;
   }
   ngOnInit() {
@@ -77,12 +64,13 @@ export class EmployeeFormComponent implements OnInit {
     this.perAddress = fieldInput.per_address;
   }
   handleChange = (name: any, value: any) => {
+    const employeeForm = this.employeeForm;
     if (name === 'attandance_id') {
-      this.employeeForm[name] = parseInt(value, 10);
+      employeeForm[name] = parseInt(value, 10);
     } else {
-      this.employeeForm[name] = value;
+      employeeForm[name] = value;
     }
-    this.store.dispatch(new EmployeeAction.HandleChange({ name, value }));
+    this.store.dispatch(new EmployeeAction.HandleChange({ name: 'employeeForm', value: employeeForm }));
   }
   handleGenders(id: number) {
     this.genderId = id;
