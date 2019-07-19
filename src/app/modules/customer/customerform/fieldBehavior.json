@@ -11,16 +11,19 @@
   },
   "typeOfCompany": {
     "name": "type_of_company",
-    "placeholder": "enter the company type",
-    "value": "",
+    "placeholder": "select the company type",
+    "value": 0,
     "errorMsg": "",
     "isMandatory": true,
     "isDisabled": false,
-    "label": "Company Type"
+    "label": "Company Type",
+    "options": [
+      { "id": 1, "name": "private", "isDisabled": false },
+      { "id": 2, "name": "public", "isDisabled": false }
+    ]
   },
   "currencyType": {
     "name": "currency",
-    "type": "text",
     "placeholder": "select currency type",
     "value": 0,
     "errorMsg": "",
@@ -40,7 +43,11 @@
     "errorMsg": "",
     "isMandatory": true,
     "isDisabled": false,
-    "label": "Country"
+    "label": "Country",
+    "options": [
+      { "id": 1, "name": "India", "isDisabled": false },
+      { "id": 2, "name": "currency", "isDisabled": false }
+    ]
   },
   "emailId": {
     "name": "emailId",

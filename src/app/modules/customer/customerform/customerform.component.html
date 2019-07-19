@@ -12,40 +12,40 @@
           <div class="modal-body">
             <div class="flex clm-12">
                 <div class="clm-6">
-                    <app-input [props] = "name"
+                    <app-input [props] = "form.name"
                     ></app-input>
                 </div>
                 <div class="clm-6">
-                        <app-input [props] = "typeOfCompany"
-                        ></app-input>
+                  <app-select-box [props] = "form.typeOfCompany"
+                        ></app-select-box>
                     </div>
                 </div> 
                 <div class="flex clm-12">
                         <div class="clm-6">
-                            <app-input [props] = "countryId"
+                            <app-input [props] = "form.countryId"
                             ></app-input>
                         </div>
                         <div class="clm-6">
-                                <app-select-box [props] = "currencyType"
+                                <app-select-box [props] = "form.currencyType"
                                 ></app-select-box>
                             </div>
                         </div> 
                         <div class="flex clm-12">
                                 <div class="clm-6">
-                                    <app-input [props] = "website"
+                                    <app-input [props] = "form.website"
                                     ></app-input>
                                 </div>
                                 <div class="clm-6">
-                                        <app-input [props] = "emailId"
+                                        <app-input [props] = "form.emailId"
                                         ></app-input>
                                     </div>
                                 </div> 
                                 <div class="clm-12">
                                     <div class="clm-12">
-                                    <app-textarea [props] = "address"></app-textarea>
+                                    <app-textarea [props] = "form.address"></app-textarea>
                                     </div>
                               </div> 
-                            <div *ngFor = "let item of contactPersons;index as i">
+                            <div *ngFor = "let item of form.contactPersons;index as i">
                               <div class = "flex p10 border-Container">
                                 <div class = " clm-11" >
                                   <div class=" flex clm-12">
@@ -88,6 +88,7 @@
           <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+                <button (click)="trial()">click</button>
           </div>
           
         </div>
