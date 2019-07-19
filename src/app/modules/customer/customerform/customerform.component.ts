@@ -81,27 +81,23 @@ export class CustomerformComponent implements OnInit {
       } else {
       this.form[key] = fieldBehavior[key];
       }
-      fieldBehavior[key].onChange = this.handleChange;
     }
   }
 
   assignValues = () => {
-    console.log(this.customer);
-    console.log(this.form);
-    // for (const key of this.objectKeys(this.form)) {
-    //  if ( key === 'contactPersons' ) {
-    //     console.log(this.customer[key][0].name);
-    //     for (const [i] of this.form.contactPersons.entries()) {
-    //       this.form[key][i].name['val'] = this.customer[key][i].name;
-    //       this.form[key][i].emailId['val'] = this.customer[key][i].emailId;
-    //       this.form[key][i].phoneNumber['val'] = this.customer[key][i].phoneNumber;
-    //       this.form[key][i].communicationId['val'] = this.customer[key][i].communicationId;
-    //       this.form[key][i].communicationTypeId['val'] = this.customer[key][i].communicationTypeId;
-    //     }
-    //   } else {
-    //   this.form[key].value = this.customer[key];
-    //   }
-    // }
+    for (const key of this.objectKeys(this.form)) {
+     if ( key === 'contactPersons' ) {
+        for (const [i] of this.form.contactPersons.entries()) {
+           this.form[key][i].name['value'] = this.customer[key][i].name;
+          this.form[key][i].emailId['value'] = this.customer[key][i].emailId;
+          this.form[key][i].phoneNumber['value'] = this.customer[key][i].phoneNumber;
+          this.form[key][i].communicationId['value'] = this.customer[key][i].communicationId;
+          this.form[key][i].communicationTypeId['value'] = this.customer[key][i].communicationTypeId;
+        }
+      } else {
+      this.form[key].value = this.customer[key];
+      }
+    }
   }
 
   handleChange = (name: string, value: any) => {
