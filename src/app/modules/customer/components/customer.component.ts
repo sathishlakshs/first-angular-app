@@ -20,7 +20,6 @@ public customer: Customer;
 constructor(private store: Store<AppState>, private customerService: CustomerService) {
   store.select('customerState').subscribe(state => {
     this.customer = state.form;
-    console.log(this.customer);
    });
 }
 
@@ -42,6 +41,7 @@ constructor(private store: Store<AppState>, private customerService: CustomerSer
 
   getEditableId = (id: number) => {
     this.customerService.getCustomer(id).subscribe(data => {
+      console.log(data);
       this.store.dispatch(new CustomerActions.FormChange(data));
       this.store.dispatch(new CustomerActions.HandleChange({name: 'willModifyId', value: data.id}));
     });
