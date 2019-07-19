@@ -4,6 +4,7 @@ import { AppState } from 'src/store/reducers';
 import { Store } from '@ngrx/store';
 import fieldInput from './fieldInputs.json';
 import { Employee } from 'src/app/model/employee.model';
+import * as EmployeeAction from '../../../../store/actions/employee.action';
 @Component({
   selector: 'app-employee-form',
   templateUrl: './employee-form.component.html',
@@ -11,6 +12,7 @@ import { Employee } from 'src/app/model/employee.model';
 })
 export class EmployeeFormComponent implements OnInit {
   @Input() empolyeePropsForm: any;
+  @Input() getAllEmployee: any;
   public imagePath: any;
   imgURL: any = 'assets/svg/sample.jpg';
   public fileToUpload: File = null;
@@ -78,13 +80,23 @@ export class EmployeeFormComponent implements OnInit {
     } else {
       this.employeeForm[name] = value;
     }
+    this.store.dispatch(new EmployeeAction.HandleChange({ name, value }));
   }
   handleGenders(id: number) {
     this.genderId = id;
     this.handleChange('gender', id);
   }
-  handleAdd = () => {
-    console.log(this.employeeForm);
+  handleAdd = async () => {
+    const formData = new FormData();
+    this.objectKeys(this.employeeForm).map((item, ) => {
+      formData.append(item, this.employeeForm[item]);
+    });
+    if (this.employeeForm['id']) {
+      this.employeeService.updateEmployee(this.employeeForm, this.employeeForm['id']).subscribe();
+      this.getAllEmployee();
+    } else {
+      console.log('add');
+    }
   }
   genderMatch(id: number) {
     if (id === this.genderId) {

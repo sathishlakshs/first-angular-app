@@ -81,6 +81,7 @@ export class CustomerformComponent implements OnInit {
       } else {
       this.form[key] = fieldBehavior[key];
       }
+      fieldBehavior[key].onChange = this.handleChange;
     }
   }
 
