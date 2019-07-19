@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, ActionReducer, State } from '@ngrx/store';
 import { customerReducer } from 'src/store/reducers/customer.reducer';
 import { InputComponent } from './common/input/input.component';
 import { TableComponent } from './common/table/table.component';
@@ -17,7 +17,12 @@ import { SimpleModalModule } from 'ngx-simple-modal';
 import { TextareaComponent } from './common/textarea/textarea.component';
 import { FormsModule } from '@angular/forms';
 import { employeeReducer } from 'src/store/reducers/employee.reducer';
-
+import { storeLogger } from 'ngrx-store-logger';
+import { environment } from 'src/environments/environment';
+export function logger(reducer: ActionReducer<State<any>>): any {
+  return storeLogger()(reducer);
+}
+export const metaReducers = environment.production ? [] : [logger];
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +41,7 @@ import { employeeReducer } from 'src/store/reducers/employee.reducer';
     FormsModule,
     AppRoutingModule,
     CommonModule,
-    StoreModule.forRoot({ customerState: customerReducer, employeeState: employeeReducer }),
+    StoreModule.forRoot({ customerState: customerReducer, employeeState: employeeReducer }, { metaReducers }),
     HttpClientModule,
     SimpleModalModule
   ],
