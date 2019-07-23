@@ -10,6 +10,7 @@ import { Component, OnInit, Input, Output } from '@angular/core';
     (input)="props.onChange(props.name,$event.target.value)"
      name={{props.name}}
      [disabled]="props.isDisabled"
+     ngModel
      >
      <span class='error'>{{props.errorMsg}}</span>
  </div>

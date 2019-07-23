@@ -5,7 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
   template: `
    <div class="">
    <label>{{props.label}}</label>
-   <select value={{props.value}} (change)="props.onChange($event,value)" class="selectBox" [disabled]="props.isDisabled">
+   <select value={{props.value}} (change)="props.onChange($event,value)" class="selectBox" [disabled]="props.isDisabled" ngModel >
    <option  value=0  [disabled]="true">{{props.placeholder}}</option>
    <option *ngFor="let option of props.options" value={{option.id}}  [disabled]="option.isDisabled">{{option.name}}</option>
    </select>
