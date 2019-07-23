@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { employeeReducer } from 'src/store/reducers/employee.reducer';
 import { storeLogger } from 'ngrx-store-logger';
 import { environment } from 'src/environments/environment';
+
 export function logger(reducer: ActionReducer<any>): any {
   return storeLogger()(reducer);
 }

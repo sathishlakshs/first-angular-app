@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/store/reducers';
-import { Observable } from 'rxjs';
+import { of } from 'rxjs';
 import { Customer } from 'src/app/model/customer.model';
 import { CustomerService } from '../pages/customer.service';
 import * as CustomerActions from '../../../../store/actions/customer.action';
@@ -24,6 +24,8 @@ constructor(private store: Store<AppState>, private customerService: CustomerSer
 }
 
   ngOnInit() {
+    const nums = of(1, 2, 3);
+    nums.subscribe(item => console.log(item));
   this.customerService.getCustomers().subscribe(data => {
     this.customers = _.map(data, item => {
       let returnObject = {};
