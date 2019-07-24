@@ -1,5 +1,5 @@
 <!-- <app-header></app-header> -->
-<button type="button" data-toggle="modal" data-target="#exampleModalCenter">
+<button type="button" data-toggle="modal" data-target="#exampleModalCenter" (click)="handleAddEmployee()">
     Add Employee
 </button>
 <ng-template [ngIf]="employeeList.length > 0">

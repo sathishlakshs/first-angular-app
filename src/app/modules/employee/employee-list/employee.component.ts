@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/store/reducers';
 import { EmployeeService } from '../pages/employee.service';
 import _ from 'lodash';
+import * as EmployeeAction from '../../../../store/actions/employee.action';
 
 @Component({
   selector: 'app-employee',
@@ -42,7 +43,11 @@ export class EmployeeComponent implements OnInit {
   add() {
     this.openForm = !this.openForm;
   }
-
+  handleAddEmployee() {
+    this.store.select('employeeState').subscribe(state => this.empolyeePropsForm = state.employeeForm);
+    const employeeForm = this.empolyeePropsForm;
+    this.store.dispatch(new EmployeeAction.HandleChange({ name: 'employeeForm', value: employeeForm }));
+  }
   getDeleteId(id: number) {
     console.log(id);
   }

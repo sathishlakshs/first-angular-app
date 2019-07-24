@@ -39,11 +39,12 @@ export class EmployeeFormComponent implements OnInit {
   }
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnChanges() {
-    this.employeeForm = this.objectKeys(this.empolyeePropsForm).length > 0 ? this.empolyeePropsForm : this.employeeForm;
+    this.employeeForm = this.objectKeys(this.empolyeePropsForm).length > 0 ? this.empolyeePropsForm :
+      this.employeeForm;
     for (const key of this.objectKeys(fieldInput)) {
       fieldInput[key].value = this.employeeForm[key];
     }
-    this.imgURL = this.empolyeePropsForm.profilePic ? this.empolyeePropsForm.profilePic : this.imgURL;
+    this.imgURL = this.empolyeePropsForm.profilePic ? this.empolyeePropsForm.profilePic : 'assets/svg/sample.jpg';
     this.genderId = this.empolyeePropsForm.gender;
   }
   ngOnInit() {
