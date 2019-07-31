@@ -4,12 +4,15 @@ import { CustomerComponent } from './modules/customer/components/customer.compon
 import { PNFComponent } from './modules/PageNotFoundComponent/components/PNFC.component';
 import { EmployeeComponent } from './modules/employee/employee-list/employee.component';
 import { CustomerformComponent } from './modules/customer/customerform/customerform.component';
+import { ProjectComponent } from './modules/project/project.component';
+import { ProjectFormComponent } from './modules/project/project-form/project-form.component';
 
 const routes: Routes = [
   {
     path: '', redirectTo: 'layout/customerForm', pathMatch: 'full'
   },
   { path: 'layout/customer', component: CustomerComponent },
+  { path: 'layout/project', component: ProjectComponent },
   { path: 'layout/employee', component: EmployeeComponent },
   { path: '**', component: PNFComponent }
 ];
@@ -30,4 +33,5 @@ const routes: Routes = [
 export class AppRoutingModule {
 }
 
-export const routingComponent = [CustomerComponent, CustomerformComponent, EmployeeComponent, PNFComponent];
+export const routingComponent = [CustomerComponent, CustomerformComponent, EmployeeComponent, ProjectComponent,
+  ProjectFormComponent, PNFComponent];

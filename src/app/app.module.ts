@@ -19,6 +19,11 @@ import { FormsModule } from '@angular/forms';
 import { employeeReducer } from 'src/store/reducers/employee.reducer';
 import { storeLogger } from 'ngrx-store-logger';
 import { environment } from 'src/environments/environment';
+import { projectReducer } from 'src/store/reducers/project.reducer';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { from } from 'rxjs';
+import { SmartTableComponent } from './common/smart-table/smart-table.component';
 
 export function logger(reducer: ActionReducer<any>): any {
   return storeLogger()(reducer);
@@ -35,16 +40,19 @@ export const metaReducers = environment.production ? [] : [logger];
     SelectBoxComponent,
     DatePickerComponent,
     HeaderComponent,
-    TextareaComponent
+    TextareaComponent,
+    SmartTableComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     CommonModule,
-    StoreModule.forRoot({ customerState: customerReducer, employeeState: employeeReducer }, { metaReducers }),
+    StoreModule.forRoot({ customerState: customerReducer, employeeState: employeeReducer, projectState: projectReducer }, { metaReducers }),
     HttpClientModule,
-    SimpleModalModule
+    SimpleModalModule,
+    BrowserAnimationsModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

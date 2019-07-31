@@ -1,0 +1,41 @@
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="row">
+            <div class="col-md-3">PROJECTS</div>
+            <div class="col-md-9">
+                <div class="row">
+                        <div class="col-md-8 oHidden">
+                                <input type="text" class="ProjectSearchBox hundPer">
+                        </div>
+                        <div class="col-md-4">
+                            <img src="assets/svg/magnify.svg" class="logoContainer">
+                        </div>
+                </div>
+            </div>
+        </div>
+        <!-- project card list-->
+        <div class="row">
+                <div *ngIf="projects.length > 0; then projectCards" ></div>
+                <ng-template #projectCards>
+                    <div cdkDropList 
+                    #projectList = "cdkDropList"
+                    [cdkDropListData]="projects" 
+                    [cdkDropListConnectedTo]=[doneList]   
+                    (cdkDropListDropped)="onDrop($event)">
+                    <div class="col-md-12 projectCard pt5 pb5 pl20" *ngFor = "let item of projects" cdkDrag>
+                        <div>{{item.name}}</div>
+                        <div class="projectEndDate">{{item.endDate}}</div>
+                    </div>
+                    </div>
+                  </ng-template>
+                
+        </div>
+    </div>
+    <div class="col-md-9">
+            <app-smart-table></app-smart-table>
+    </div>
+</div>
+<!-- <app-project-form [project]="project"></app-project-form> -->
+
+
