@@ -5,7 +5,10 @@ import { Component, OnInit, Input } from '@angular/core';
   template: `
    <div class="">
    <label>{{props.label}}</label>
-   <select value={{props.value}} (change)="props.onChange($event,value)" class="selectBox" [disabled]="props.isDisabled" ngModel >
+   <select value={{props.value}} (change)="props.onChange(props.name,$event.target.value)"
+    class="selectBox" [disabled]="props.isDisabled" ngModel
+    name={{props.name}}
+    >
    <option  value=0  [disabled]="true">{{props.placeholder}}</option>
    <option *ngFor="let option of props.options" value={{option.id}}  [disabled]="option.isDisabled">{{option.name}}</option>
    </select>
@@ -50,9 +53,9 @@ export class SelectBoxComponent implements OnInit {
   }
 
   ngOnInit() {
-      // if (this.props.placeholder) {
-      // this.props.options.unshift({id: 0, name: this.props.placeholder, isDisabled: true});
-      // }
+    // if (this.props.placeholder) {
+    // this.props.options.unshift({id: 0, name: this.props.placeholder, isDisabled: true});
+    // }
   }
 
 }

@@ -19,6 +19,10 @@ import { FormsModule } from '@angular/forms';
 import { employeeReducer } from 'src/store/reducers/employee.reducer';
 import { storeLogger } from 'ngrx-store-logger';
 import { environment } from 'src/environments/environment';
+import { TasklistComponent } from './modules/task/tasklist/tasklist.component';
+import { appReducer } from 'src/store/reducers/app.reducer';
+import { TaskformComponent } from './modules/task/taskform/taskform/taskform.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 export function logger(reducer: ActionReducer<any>): any {
   return storeLogger()(reducer);
@@ -35,16 +39,19 @@ export const metaReducers = environment.production ? [] : [logger];
     SelectBoxComponent,
     DatePickerComponent,
     HeaderComponent,
-    TextareaComponent
+    TextareaComponent,
+    TasklistComponent,
+    TaskformComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     CommonModule,
-    StoreModule.forRoot({ customerState: customerReducer, employeeState: employeeReducer }, { metaReducers }),
+    StoreModule.forRoot({ customerState: customerReducer, employeeState: employeeReducer, appState: appReducer }, { metaReducers }),
     HttpClientModule,
-    SimpleModalModule
+    SimpleModalModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

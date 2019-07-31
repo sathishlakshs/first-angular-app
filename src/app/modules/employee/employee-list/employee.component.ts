@@ -15,7 +15,8 @@ export class EmployeeComponent implements OnInit {
   openForm = false;
   public empolyeePropsForm = {};
   public employeeList: any[] = [];
-  constructor(private store: Store<AppState>, private employeeService: EmployeeService) { }
+  constructor(private store: Store<AppState>, private employeeService: EmployeeService) {
+  }
   ngOnInit() {
     this.getAllEmployee();
   }

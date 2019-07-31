@@ -13,28 +13,27 @@ import * as _ from 'lodash';
   styleUrls: ['./customer.component.scss']
 })
 export class CustomerComponent implements OnInit {
-public title: string = 'customer';
-public customers: any[] = [];
-public customer: Customer;
+  public title: string = 'customer';
+  public customers: any[] = [];
+  public customer: Customer;
 
-constructor(private store: Store<AppState>, private customerService: CustomerService) {
-  store.select('customerState').subscribe(state => {
-    this.customer = state.form;
-   });
-}
-
+  constructor(private store: Store<AppState>, private customerService: CustomerService) {
+    store.select('customerState').subscribe(state => {
+      this.customer = state.form;
+    });
+  }
   ngOnInit() {
     const nums = of(1, 2, 3);
     nums.subscribe(item => console.log(item));
-  this.customerService.getCustomers().subscribe(data => {
-    this.customers = _.map(data, item => {
-      let returnObject = {};
-       returnObject['companyName'] = _.pick(item, ['name']).name;
-       returnObject = {...returnObject, ... _.pick(item, ['id'])};
-       returnObject = {...returnObject, ... _.pick(_.find(item.contactPersons, {isSPOC: true}), ['name', 'emailId', 'phoneNumber'])};
-       return returnObject;
- });
-  });
+    this.customerService.getCustomers().subscribe(data => {
+      this.customers = _.map(data, item => {
+        let returnObject = {};
+        returnObject['companyName'] = _.pick(item, ['name']).name;
+        returnObject = { ...returnObject, ..._.pick(item, ['id']) };
+        returnObject = { ...returnObject, ..._.pick(_.find(item.contactPersons, { isSPOC: true }), ['name', 'emailId', 'phoneNumber']) };
+        return returnObject;
+      });
+    });
   }
 
   getDeleteId(id: number) {
@@ -44,7 +43,7 @@ constructor(private store: Store<AppState>, private customerService: CustomerSer
   getEditableId = (id: number) => {
     this.customerService.getCustomer(id).subscribe(data => {
       this.store.dispatch(new CustomerActions.FormChange(data));
-      this.store.dispatch(new CustomerActions.HandleChange({name: 'willModifyId', value: data.id}));
+      this.store.dispatch(new CustomerActions.HandleChange({ name: 'willModifyId', value: data.id }));
     });
   }
 }

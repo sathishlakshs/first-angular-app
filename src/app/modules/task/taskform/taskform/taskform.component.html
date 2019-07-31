@@ -1,0 +1,24 @@
+<div cdkDropList cdkDropListOrientation="horizontal" class="example-list flex" (cdkDropListDropped)="drop($event)">
+
+  <div class="flex" *ngFor="let item of todos">
+    <div class="flex">
+      <div class="example-box block flex" cdkDrag>
+        <div>{{item.name}}</div>
+      </div>
+      <span class="mr10 resize" (resize)="onResize($event)">|
+        |
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="example-container" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+  [cdkDropListConnectedTo]="[todoList]" class="example-list" (cdkDropListDropped)="drop($event)"
+  cdkDrag
+  >
+  <h2>Done</h2>
+
+  <div >
+    <div class="example-box" *ngFor="let item of done">{{item}}</div>
+  </div>
+</div> -->

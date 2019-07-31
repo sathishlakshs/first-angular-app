@@ -1,0 +1,30 @@
+<div class="flex">
+    <div class="col-2">
+        <app-select-box [props]="selectBoxPros"></app-select-box>
+    </div>
+    <button type="button" data-toggle="modal" data-target="#taskFormModal">
+        Add Task
+    </button>
+
+</div>
+<!-- <ng-template [ngIf]="taskList.length > 0">
+    <app-table [enableHover]="true" [isEditRequire]="true" [isDeleteRequire]="true" [spaceNeedColumn]="[]"
+        [data]="taskList" [getEditableId]="getEditableId" [getDeleteId]="getDeleteId" [dataTarget]="'#taskFormModal'">
+    </app-table>
+</ng-template>
+<div class="modal fade" id="taskFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog employeeFormModal modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Employee Form</h5>
+
+            </div>
+            <div class="modal-body">
+            </div>
+
+        </div>
+    </div> -->
+
+<app-taskform class="flex"></app-taskform>
+    

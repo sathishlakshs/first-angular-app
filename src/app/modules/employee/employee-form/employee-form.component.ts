@@ -34,7 +34,7 @@ export class EmployeeFormComponent implements OnInit {
   public gender: { id: number, name: string }[] = [];
   public genderId: number;
   public objectKeys = Object.keys;
-  constructor(private store: Store<AppState>, private employeeService: EmployeeService) {
+  constructor(private store?: Store<AppState>, private employeeService?: EmployeeService) {
     this.store.select('employeeState').subscribe(state => this.employeeForm = state.employeeForm);
   }
   // tslint:disable-next-line:use-lifecycle-interface
