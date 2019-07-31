@@ -3,22 +3,22 @@
     cdkDropListOrientation="horizontal"
     (cdkDropListDropped)="onDrop($event)"
     >
-        <div class="columnBorder example-box"
+        <div class="columnBorder example-box userSelectAuto"
+        *ngFor = "let obj of data; index as i"
         [style.width.px]="columnwidth"
-        *ngFor = "let obj of data"
         cdkDrag>
         <div >
-        <div class="relative" *ngFor = "let col of objectKeys(obj);" >
+        <div class="relative moveCursor" *ngFor = "let col of objectKeys(obj)" >
         <div class="grabber"
-        (mousedown)	="mouseDown($event)"
+        (mousedown)	="mouseDown(i ,$event)"
         *ngIf = "col === 'heading'"></div>
         <div [ngSwitch]="col" >
             <div *ngSwitchCase = "'heading'">
                 <div class="p10" >{{obj[col]}}</div>
             </div>
             <div *ngSwitchCase = "'values'">
-                    <div *ngFor = "let item of obj[col]">
-                        <div class="p10">{{ item }}</div>
+                    <div *ngFor = "let item of obj[col]" (mousedown) = "mouseDownForText($event)">
+                        <div class="p10 moveDefault">{{ item }}</div>
                     </div>
             </div>
         </div>
