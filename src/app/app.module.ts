@@ -22,7 +22,6 @@ import { environment } from 'src/environments/environment';
 import { projectReducer } from 'src/store/reducers/project.reducer';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { from } from 'rxjs';
 import { SmartTableComponent } from './common/smart-table/smart-table.component';
 
 export function logger(reducer: ActionReducer<any>): any {

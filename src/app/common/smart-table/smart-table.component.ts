@@ -3,33 +3,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 
 @Component({
   selector: 'app-smart-table',
-  template: `
-    <div class="row example-list"
-    cdkDropList
-    cdkDropListOrientation="horizontal"
-    (cdkDropListDropped)="onDrop($event)">
-        <div class="columnBorder example-box"
-        [style.width.px]="columnwidth"
-        *ngFor = "let obj of data" cdkDrag>
-        <div >
-        <div class="relative" *ngFor = "let col of objectKeys(obj)">
-        <div class="grabber"
-        (mousedown)	="mouseDown($event)"
-        *ngIf = "col === 'heading'"></div>
-        <div *ngIf = "col === 'heading'; then headers; else values"></div>
-          <ng-template #headers>
-              <div class="p10" >{{obj[col]}}</div>
-            </ng-template>
-            <ng-template #values>
-              <div *ngFor = "let item of obj[col]">
-                  <div class="p10">{{ item }}</div>
-                </div>
-            </ng-template>
-        </div>
-        </div>
-        </div>
-    </div>
-  `,
+  templateUrl: './smart-table.html',
   styles: [`
   .columnBorder{
     border: 1px solid #000;
@@ -139,14 +113,23 @@ export class SmartTableComponent implements OnInit {
 
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
+    event.stopPropagation();
+    if (this.grabber) {
+      const temp = [];
+        for (const item of this.data ) {
+          item.disabled = true;
+          temp.push(item);
+        }
+        this.data = temp;
+    }
     if (!this.grabber) {
         return;
     }
-    this.resizer(event.clientX - this.oldX);
+    this.resizer(event, event.clientX - this.oldX);
     this.oldX = event.clientX;
   }
 
-  resizer(offsetX: number) {
+  resizer(event, offsetX: number) {
     this.columnwidth += offsetX;
   }
 
@@ -156,13 +139,23 @@ export class SmartTableComponent implements OnInit {
   // }
 
   mouseDown = (event: MouseEvent) => {
-    event.preventDefault();
+    event.stopPropagation();
     this.grabber = true;
     this.oldX = event.clientX;
   }
 
   @HostListener('document:mouseup', ['$event'])
   onMouseUp(event: MouseEvent) {
+    const tempArr = [];
+    for (const item of this.data ) {
+      item['disabled'] = false;
+      console.log(item);
+      tempArr.push(item);
+      console.log(tempArr);
+    }
+    // console.log(tempArr);
+    this.data = tempArr;
+    // console.log(this.data);
     this.grabber = false;
   }
 
