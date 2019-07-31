@@ -1,6 +1,6 @@
 <div class="row example-list" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="onDrop($event)">
     <div class="columnBorder example-box userSelectAuto"  *ngFor="let obj of data;index as i"
-    [style.width.px]="obj.width"
+    [style.width.px]="columnwidth[i]"
     cdkDrag>
         <div>
             <div class="relative" *ngFor="let col of objectKeys(obj);">
@@ -11,7 +11,7 @@
                     </div>
                     <div *ngSwitchCase="'values'">
                         <div *ngFor="let item of obj[col]">
-                            <div class="p10">{{ item }}</div>
+                            <div class="p10" (mousedown) = "mouseDownForText($event)">{{ item }}</div>
                         </div>
                     </div>
                 </div>

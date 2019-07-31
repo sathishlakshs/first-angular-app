@@ -102,7 +102,7 @@ export class SmartTableComponent implements OnInit {
   public data: any;
   public howManyColumn: number = 0;
   public objectKeys = Object.keys;
-  public columnwidth = 150;
+  public columnwidth = [150, 150, 150, 150];
   public y = 10;
   public oldX = 0;
   public grabber = false;
@@ -112,10 +112,10 @@ export class SmartTableComponent implements OnInit {
 
   ngOnInit() {
     this.data = [
-      { heading: 'heading1', values: ['r1c1', 'r1c2', 'r1c3', 'r1c4'], width: 150 },
-      { heading: 'heading2', values: ['r2c1', 'r2c2', 'r2c3', 'r2c4'], width: 150 },
-      { heading: 'heading3', values: ['r3c1', 'r3c2', 'r3c3', 'r34'], width: 150 },
-      { heading: 'heading4', values: ['r4c1', 'r4c2', 'r4c3', 'r4c4'], width: 150 }
+      { heading: 'heading1', values: ['r1c1', 'r1c2', 'r1c3', 'r1c4'] },
+      { heading: 'heading2', values: ['r2c1', 'r2c2', 'r2c3', 'r2c4'] },
+      { heading: 'heading3', values: ['r3c1', 'r3c2', 'r3c3', 'r34'] },
+      { heading: 'heading4', values: ['r4c1', 'r4c2', 'r4c3', 'r4c4'] }
     ];
   }
 
@@ -126,48 +126,22 @@ export class SmartTableComponent implements OnInit {
   @HostListener('document:mousemove', ['Index', '$event'])
   onMouseMove(index, event: MouseEvent) {
     event.stopPropagation();
-    if (this.grabber) {
-      const temp = [];
-      for (const item of this.data) {
-        item.disabled = true;
-        temp.push(item);
-      }
-      this.data = temp;
-    }
     if (!this.grabber) {
       return;
     }
-    // console.log(this.data);
-    this.data[index].width = event.clientX - this.oldX;
-    // this.resizer(event, event.clientX - this.oldX);
+     this.resizer(event.clientX - this.oldX);
     this.oldX = event.clientX;
   }
 
-  // mouseMove(index, event: MouseEvent) {
-  //   if (!this.grabber) {
-  //     return;
-  //   }
-  //   this.resizer(index, event.clientX - this.oldX);
-  //   this.oldX = event.clientX;
-  // }
-
   resizer( offsetX: number) {
-    this.columnwidth += offsetX;
+    this.columnwidth[this.Index] += offsetX;
   }
-
-  // mouseUp = (event: MouseEvent) => {
-  //   console.log('hai');
-  //   this.grabber = false;
-  // }
 
   mouseDown = (index, event: MouseEvent) => {
     event.stopPropagation();
-    console.log('mousedown');
     this.grabber = true;
     this.oldX = event.clientX;
     this.Index = index;
-    console.log(this.Index);
-    // this.mouseover(index, event);
   }
 
   mouseDownForText = (event: MouseEvent) => {
@@ -176,16 +150,6 @@ export class SmartTableComponent implements OnInit {
 
   @HostListener('document:mouseup', ['$event'])
   onMouseUp(event: MouseEvent) {
-    const tempArr = [];
-    for (const item of this.data) {
-      item['disabled'] = false;
-      // console.log(item);
-      tempArr.push(item);
-      // console.log(tempArr);
-    }
-    // console.log(tempArr);
-    this.data = tempArr;
-    // console.log(this.data);
     this.grabber = false;
   }
   mouseover(index, event: MouseEvent) {
