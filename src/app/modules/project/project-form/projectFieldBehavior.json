@@ -1,0 +1,12 @@
+{
+  "projectName": {
+    "name": "name",
+    "type": "text",
+    "placeholder": "enter the project name",
+    "value": "",
+    "errorMsg": "",
+    "isMandatory": true,
+    "isDisabled": false,
+    "label": "Project Name"
+  }
+}

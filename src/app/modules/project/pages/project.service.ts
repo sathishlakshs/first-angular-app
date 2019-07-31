@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, , HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Project } from '../../../model/project.model';
 import { Observable, throwError as observableThrowError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -12,11 +14,13 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class AppSerivceService {
-  readonly GET_PROJECT = 'http://13.233.174.131:9000/projects';
+export class ProjectService {
+  readonly GET_PROJECTS_URL = 'http://13.233.174.131:9000/projects';
+
   constructor(private http: HttpClient) { }
-  getAllProject(): Observable<any> {
-    return this.http.get<any>(this.GET_PROJECT, httpOptions).pipe(catchError(this.errorHandling));
+
+  getProjects(): Observable<Project[]> {
+    return this.http.get<Project[]>(this.GET_PROJECTS_URL, httpOptions).pipe(catchError(this.errorHandling));
   }
 
   errorHandling(error: HttpErrorResponse) {

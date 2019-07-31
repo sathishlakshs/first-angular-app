@@ -23,6 +23,10 @@ import { TasklistComponent } from './modules/task/tasklist/tasklist.component';
 import { appReducer } from 'src/store/reducers/app.reducer';
 import { TaskformComponent } from './modules/task/taskform/taskform/taskform.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { projectReducer } from 'src/store/reducers/project.reducer';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { from } from 'rxjs';
+import { SmartTableComponent } from './common/smart-table/smart-table.component';
 
 export function logger(reducer: ActionReducer<any>): any {
   return storeLogger()(reducer);
@@ -41,16 +45,18 @@ export const metaReducers = environment.production ? [] : [logger];
     HeaderComponent,
     TextareaComponent,
     TasklistComponent,
-    TaskformComponent
+    TaskformComponent,
+    SmartTableComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     CommonModule,
-    StoreModule.forRoot({ customerState: customerReducer, employeeState: employeeReducer, appState: appReducer }, { metaReducers }),
+    StoreModule.forRoot({ customerState: customerReducer, employeeState: employeeReducer, projectState: projectReducer }, { metaReducers }),
     HttpClientModule,
     SimpleModalModule,
+    BrowserAnimationsModule,
     DragDropModule
   ],
   providers: [],
