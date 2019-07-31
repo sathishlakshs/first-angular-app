@@ -1,5 +1,5 @@
 <div class="row example-list" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="onDrop($event)">
-    <div class="columnBorder example-box"  *ngFor="let obj of data;index as i"
+    <div class="columnBorder example-box userSelectAuto"  *ngFor="let obj of data;index as i"
     [style.width.px]="obj.width"
     cdkDrag>
         <div>

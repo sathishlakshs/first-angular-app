@@ -34,9 +34,20 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    cursor: move;
     background: white;
     font-size: 14px;
+  }
+
+  .moveCursor{
+    cursor: move;
+  }
+
+  .userSelectAuto{
+    user-select: auto !important;
+  }
+
+  .moveDefault {
+    cursor: default;
   }
 
   .grapper:hover ~ .example-box {
@@ -132,7 +143,15 @@ export class SmartTableComponent implements OnInit {
     this.oldX = event.clientX;
   }
 
-  resizer(event, offsetX: number) {
+  // mouseMove(index, event: MouseEvent) {
+  //   if (!this.grabber) {
+  //     return;
+  //   }
+  //   this.resizer(index, event.clientX - this.oldX);
+  //   this.oldX = event.clientX;
+  // }
+
+  resizer( offsetX: number) {
     this.columnwidth += offsetX;
   }
 
@@ -143,11 +162,16 @@ export class SmartTableComponent implements OnInit {
 
   mouseDown = (index, event: MouseEvent) => {
     event.stopPropagation();
+    console.log('mousedown');
     this.grabber = true;
     this.oldX = event.clientX;
     this.Index = index;
     console.log(this.Index);
     // this.mouseover(index, event);
+  }
+
+  mouseDownForText = (event: MouseEvent) => {
+    event.stopPropagation();
   }
 
   @HostListener('document:mouseup', ['$event'])
