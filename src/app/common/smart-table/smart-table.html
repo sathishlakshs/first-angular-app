@@ -1,0 +1,27 @@
+<div class="row example-list" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="onDrop($event)">
+    <div class="columnBorder example-box"  *ngFor="let obj of data;index as i"
+    [style.width.px]="obj.width"
+    cdkDrag>
+        <div>
+            <div class="relative" *ngFor="let col of objectKeys(obj);">
+                <div class="grabber" (mousedown)="mouseDown(i,$event)"  *ngIf="col === 'heading'"></div>
+                <div [ngSwitch]="col">
+                    <div *ngSwitchCase="'heading'">
+                        <div class="p10">{{obj[col]}}</div>
+                    </div>
+                    <div *ngSwitchCase="'values'">
+                        <div *ngFor="let item of obj[col]">
+                            <div class="p10">{{ item }}</div>
+                        </div>
+                    </div>
+                </div>
+                <ng-template #headers>
+
+                </ng-template>
+                <ng-template #values>
+
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
