@@ -1,27 +1,35 @@
 <div class="row example-list" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="onDrop($event)">
-    <div class="columnBorder example-box userSelectAuto"  *ngFor="let obj of data;index as i"
-    [style.width.px]="columnwidth[i]"
-    cdkDrag>
+    <div class="columnBorder example-box userSelectAuto" *ngFor="let obj of data;index as i"
+        [style.width.px]="columnwidth[i]"  cdkDrag>
         <div>
             <div class="relative" *ngFor="let col of objectKeys(obj);">
-                <div class="grabber" (mousedown)="mouseDown(i,$event)"  *ngIf="col === 'heading'"></div>
+                <div class="grabber" (mousedown)="mouseDown(i,$event)" *ngIf="col === 'heading'"></div>
                 <div [ngSwitch]="col">
                     <div *ngSwitchCase="'heading'">
-                        <div class="p10">{{obj[col]}}</div>
+                        <div class="p10 flex">{{obj[col]}}
+                            <div class="dropdown mr10">
+                                <span id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <i>^</i>
+                                </span>
+                                <div class="dropdown-menu dropdown-list" aria-labelledby="dropdownMenuButton">
+                                    <span class="dropdown-item" (click)="handleFilter(i,'asc')">Ascending oder</span>
+                                    <span class="dropdown-item" (click)="handleFilter(i,'desc')">Descending order</span>
+                                    <span class="dropdown-item" (click)="handleFilter(i,'others')">Something else
+                                        here</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div *ngSwitchCase="'values'">
                         <div *ngFor="let item of obj[col]">
-                            <div class="p10" (mousedown) = "mouseDownForText($event)">{{ item }}</div>
+                            <div class="p10" (mousedown)="mouseDownForText($event)">{{ item }}</div>
                         </div>
                     </div>
                 </div>
-                <ng-template #headers>
-
-                </ng-template>
-                <ng-template #values>
-
-                </ng-template>
             </div>
         </div>
     </div>
+
 </div>
+<button (click)="handleSave()">save</button>

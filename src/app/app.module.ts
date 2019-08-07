@@ -15,7 +15,10 @@ import { DatePickerComponent } from './common/date-picker/date-picker.component'
 import { HeaderComponent } from './common/header/header.component';
 import { SimpleModalModule } from 'ngx-simple-modal';
 import { TextareaComponent } from './common/textarea/textarea.component';
-import { FormsModule } from '@angular/forms';
+import {
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { employeeReducer } from 'src/store/reducers/employee.reducer';
 import { storeLogger } from 'ngrx-store-logger';
 import { environment } from 'src/environments/environment';
@@ -51,10 +54,13 @@ export const metaReducers = environment.production ? [] : [logger];
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     CommonModule,
-    StoreModule.forRoot({ customerState: customerReducer, employeeState: employeeReducer, projectState: projectReducer,
-      appState: appReducer }, { metaReducers }),
+    StoreModule.forRoot({
+      customerState: customerReducer, employeeState: employeeReducer, projectState: projectReducer,
+      appState: appReducer
+    }, { metaReducers }),
     HttpClientModule,
     SimpleModalModule,
     BrowserAnimationsModule,

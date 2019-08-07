@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Output } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
@@ -21,7 +21,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
     min-height: 60px;
     background: white;
     border-radius: 4px;
-    overflow: hidden;
+    // overflow: hidden;
     display: flex;
     width: fit-content;
   }
@@ -118,22 +118,22 @@ export class SmartTableComponent implements OnInit {
       { heading: 'heading4', values: ['r4c1', 'r4c2', 'r4c3', 'r4c4'] }
     ];
   }
-
+  @Output()
   onDrop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.data, event.previousIndex, event.currentIndex);
   }
 
-  @HostListener('document:mousemove', ['Index', '$event'])
-  onMouseMove(index, event: MouseEvent) {
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent) {
     event.stopPropagation();
     if (!this.grabber) {
       return;
     }
-     this.resizer(event.clientX - this.oldX);
+    this.resizer(event.clientX - this.oldX);
     this.oldX = event.clientX;
   }
 
-  resizer( offsetX: number) {
+  resizer(offsetX: number) {
     this.columnwidth[this.Index] += offsetX;
   }
 
@@ -163,5 +163,18 @@ export class SmartTableComponent implements OnInit {
   //   this.oldX = event.clientX;
   // }
 
+  handleFilter(index, name) {
+    switch (name) {
+      case 'asc':
+        return this.data[index].values.sort((a, b) => a.localeCompare(b));
+      case 'desc':
+        return this.data[index].values.sort((a, b) => b.localeCompare(a));
+
+    }
+
+  }
+  handleSave() {
+    console.log(this.data);
+  }
 }
 

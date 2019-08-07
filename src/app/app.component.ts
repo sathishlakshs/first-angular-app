@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
 
     },
     { icon: 'assets/svg/customer.svg', menuName: 'Customer', route: 'layout/customer' },
-    { icon: 'assets/svg/projects.svg', menuName: 'Project', route: 'layout/customer' },
+    { icon: 'assets/svg/projects.svg', menuName: 'Project', route: 'layout/project' },
     { icon: 'assets/svg/task.svg', menuName: 'Task', route: 'layout/task' },
     { icon: 'assets/svg/time-sheet-icon.svg', menuName: 'Timesheet', route: 'layout/customer' },
     { icon: 'assets/svg/account-multiple.svg', menuName: 'Employees', route: 'layout/employee' },

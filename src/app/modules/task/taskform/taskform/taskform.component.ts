@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -8,39 +8,31 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
   styleUrls: ['./taskform.component.scss']
 })
 export class TaskformComponent implements OnInit {
-  @Input() template;
-  constructor() { }
+  registerForm: FormGroup;
+  submitted = false;
 
-  todos = [
-    {
-      name: 'Get to work Pic  groceries Go home Fall asleep'
-    },
-    {
-      name: 'Get to work Pic  groceries Go home Fall asleep'
-    },
-  ];
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    console.log(this.template);
+    this.registerForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
   }
 
-  // drop(event: CdkDragDrop<string[]>) {
-  //   console.log(event);
-  //   if (event.previousContainer === event.container) {
-  //     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-  //   } else {
-  //     transferArrayItem(event.previousContainer.data,
-  //       event.container.data,
-  //       event.previousIndex,
-  //       event.currentIndex);
-  //   }
-  // }
+  // convenience getter for easy access to form fields
+  get f() { return this.registerForm.controls; }
 
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
-  }
-  onResize(event) {
-    console.log(event);
-  }
+  onSubmit() {
+    this.submitted = true;
+    console.log(this.registerForm.controls);
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+      return;
+    }
 
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value));
+  }
 }
