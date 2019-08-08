@@ -52,29 +52,6 @@ export class TasklistComponent implements OnInit {
   }
   constructor(private store: Store<AppState>, private taskService: TaskServiceService,
     private renderer: Renderer2, private el: ElementRef) {
-    // this.nestedTreeControl = new NestedTreeControl<FileNode>(this.getChildren);
-    // this.nestedDataSource = new MatTreeNestedDataSource();
-
-    // this.dataChange.subscribe(data => this.nestedDataSource.data = data);
-
-    // this.dataChange.next([
-    //   {
-    //     filename: 'folder',
-    //     type: '',
-    //     children: [
-    //       {
-    //         filename: 'test3',
-    //         type: 'exe',
-    //         children: [],
-    //       }
-    //     ],
-    //   },
-    //   {
-    //     filename: 'test2',
-    //     type: 'exe',
-    //     children: [],
-    //   },
-    // ]);
   }
 
   ngOnInit() {
@@ -102,11 +79,6 @@ export class TasklistComponent implements OnInit {
     });
   }
 
-  // private getChildren = (node: FileNode) => { observableOf(node.children); };
-
-  // // tslint:disable-next-line:no-shadowed-variable
-  // // tslint:disable-next-line:arrow-return-shorthand
-  // hasNestedChild = (_: number, nodeData: FileNode) => { return !(nodeData.type); };
 
 
 }
