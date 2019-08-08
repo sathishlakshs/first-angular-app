@@ -1,4 +1,4 @@
-<!-- <div class="flex">
+<div class="flex">
     <div class="col-2">
         <app-select-box [props]="selectBoxPros"></app-select-box>
     </div>
@@ -25,10 +25,10 @@
             </div>
 
         </div>
-    </div> -->
+    </div>
 
 
-<!-- <div class="dropdown mr10">
+    <!-- <div class="dropdown mr10">
     <span   id="dropdownMenuButton" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
        <i>icon</i>
@@ -40,47 +40,22 @@
         <a class="dropdown-item" href="#">Something else here</a>
     </div>
 </div> -->
-<!-- <app-taskform class="flex"></app-taskform> -->
-
-
-<!-- 
-<mat-tree [dataSource]="nestedDataSource" [treeControl]="nestedTreeControl" class="example-tree">
-    <mat-tree-node *matTreeNodeDef="let node">
-        <li class="mat-tree-node">
-            <button mat-icon-button disabled></button>
-            {{node.filename}}: {{node.type}} 
-        </li>
-    </mat-tree-node>
-
-    <mat-nested-tree-node *matTreeNodeDef="let node; when: hasNestedChild">
-        <li>
-            <div class="mat-tree-node">
-                <button mat-icon-button matTreeNodeToggle>
-                    <mat-icon class="mat-icon-rtl-mirror">
-                        {{nestedTreeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-                    </mat-icon>
-                </button>
-                {{node.filename}}
-            </div>
-            <ul [class.example-tree-invisible]="!nestedTreeControl.isExpanded(node)">
-                <ng-container matTreeNodeOutlet></ng-container>
-            </ul>
-        </li>
-    </mat-nested-tree-node>
-</mat-tree> -->
+    <!-- <app-taskform class="flex"></app-taskform> -->
 
 
 
-<div id='treeparent'>
-    <ejs-treeview id="tree" [fields]="field" [cssClass]="cssClass" [allowDragAndDrop]=true>
-        <ng-template #nodeTemplate="" let-data="">
-            <div>
-                <img class="eimage"
-                    src="https://ej2.syncfusion.com/demos/src/treeview/images/employees/{{data.eimg}}.png"
-                    alt="{{data.eimg}}" />
-                <div class="ename">{{data.name}}</div>
-                <div class="ejob">{{data.job}}</div>
-            </div>
-        </ng-template>
-    </ejs-treeview>
-</div>
+
+
+    <div id='treeparent'>
+        <ejs-treeview id="tree" [fields]="field" [cssClass]="cssClass" [allowDragAndDrop]=true>
+            <ng-template #nodeTemplate="" let-data="">
+                <div>
+                    <img class="eimage"
+                        src="https://ej2.syncfusion.com/demos/src/treeview/images/employees/{{data.eimg}}.png"
+                        alt="{{data.eimg}}" />
+                    <div class="ename">{{data.name}}</div>
+                    <div class="ejob">{{data.job}}</div>
+                </div>
+            </ng-template>
+        </ejs-treeview>
+    </div>
