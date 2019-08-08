@@ -30,6 +30,18 @@ import { projectReducer } from 'src/store/reducers/project.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SmartTableComponent } from './common/smart-table/smart-table.component';
 import { taskReducer } from 'src/store/reducers/task.reducer';
+import { MapChartComponent } from './common/map-chart/map-chart.component';
+import { MapsModule,
+  LegendService,
+  MarkerService,
+  MapsTooltipService,
+  DataLabelService,
+  BubbleService,
+  NavigationLineService,
+  SelectionService,
+  AnnotationsService,
+  ZoomService,
+  HighlightService} from '@syncfusion/ej2-angular-maps';
 
 export function logger(reducer: ActionReducer<any>): any {
   return storeLogger()(reducer);
@@ -53,6 +65,7 @@ export const metaReducers = environment.production ? [] : [logger];
   ],
   imports: [
     BrowserModule,
+    MapsModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
@@ -66,7 +79,16 @@ export const metaReducers = environment.production ? [] : [logger];
     BrowserAnimationsModule,
     DragDropModule
   ],
-  providers: [],
+  providers: [ LegendService,
+    MarkerService,
+    MapsTooltipService,
+    DataLabelService,
+    BubbleService,
+    NavigationLineService,
+    SelectionService,
+    AnnotationsService,
+    ZoomService,
+    HighlightService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
