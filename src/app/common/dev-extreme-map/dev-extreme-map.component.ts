@@ -136,11 +136,11 @@ this.markers = {
 };
     }
 
-    customizeText(arg) {
+    customizeText = (arg) => {
         return this.names[arg.index];
     }
 
-    customizeTooltip(arg) {
+    customizeTooltip = (arg) => {
         if (arg.layer.type === 'marker') {
             return {
                 text: arg.attribute('tooltip')
