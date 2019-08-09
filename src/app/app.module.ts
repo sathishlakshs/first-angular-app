@@ -32,6 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SmartTableComponent } from './common/smart-table/smart-table.component';
 import { taskReducer } from 'src/store/reducers/task.reducer';
 import { FusionChartsModule } from 'angular-fusioncharts';
+import { DxVectorMapModule } from 'devextreme-angular';
 import {
     MapsModule,
     LegendService,
@@ -51,6 +52,7 @@ import * as FusionMaps from 'fusioncharts/fusioncharts.maps';
 import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 import { MatTreeModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { MapChartComponent } from './common/map-chart/map-chart.component';
+import { DevExtremeMapComponent } from './common/dev-extreme-map/dev-extreme-map.component';
 
 export function logger(reducer: ActionReducer<any>): any {
   return storeLogger()(reducer);
@@ -75,11 +77,13 @@ FusionChartsModule.fcRoot(
     TextareaComponent,
     TasklistComponent,
     TaskformComponent,
-    SmartTableComponent
+    SmartTableComponent,
+    DevExtremeMapComponent
   ],
   imports: [
     BrowserModule,
     MapsModule,
+    DxVectorMapModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
