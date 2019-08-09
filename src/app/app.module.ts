@@ -50,6 +50,7 @@ import * as FusionCharts from 'fusioncharts';
 import * as FusionMaps from 'fusioncharts/fusioncharts.maps';
 import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 import { MatTreeModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { MapChartComponent } from './common/map-chart/map-chart.component';
 
 export function logger(reducer: ActionReducer<any>): any {
   return storeLogger()(reducer);
@@ -78,6 +79,7 @@ FusionChartsModule.fcRoot(
   ],
   imports: [
     BrowserModule,
+    MapsModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
@@ -93,7 +95,8 @@ FusionChartsModule.fcRoot(
     TreeViewModule,
     FusionChartsModule
   ],
-  providers: [LegendService,
+  providers: [
+    LegendService,
     MarkerService,
     MapsTooltipService,
     DataLabelService,
