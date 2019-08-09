@@ -44,6 +44,7 @@ export class MapChartComponent implements OnInit {
   public shapeSettings: Object;
   // tslint:disable-next-line:ban-types
   public dataLabelSettings: Object;
+  public temp: string = '';
     ngOnInit(): void {
 
       this.titleSettings = {
