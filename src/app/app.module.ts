@@ -30,10 +30,7 @@ import { CdkTreeModule } from '@angular/cdk/tree';
 import { projectReducer } from 'src/store/reducers/project.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SmartTableComponent } from './common/smart-table/smart-table.component';
-<<<<<<< HEAD
 import { taskReducer } from 'src/store/reducers/task.reducer';
-<<<<<<< HEAD
-import { MapChartComponent } from './common/map-chart/map-chart.component';
 import { MapsModule,
   LegendService,
   MarkerService,
@@ -45,13 +42,8 @@ import { MapsModule,
   AnnotationsService,
   ZoomService,
   HighlightService} from '@syncfusion/ej2-angular-maps';
-=======
 import { MatTreeModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
-
->>>>>>> c495c09138143320534b73a5f1a888bb97687e95
-=======
->>>>>>> parent of e23a3ad... map chart
 
 export function logger(reducer: ActionReducer<any>): any {
   return storeLogger()(reducer);
