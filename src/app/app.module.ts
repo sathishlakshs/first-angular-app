@@ -32,26 +32,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SmartTableComponent } from './common/smart-table/smart-table.component';
 import { taskReducer } from 'src/store/reducers/task.reducer';
 import { FusionChartsModule } from 'angular-fusioncharts';
-
-
 import {
-  MapsModule,
-  LegendService,
-  MarkerService,
-  MapsTooltipService,
-  DataLabelService,
-  BubbleService,
-  NavigationLineService,
-  SelectionService,
-  AnnotationsService,
-  ZoomService,
-  HighlightService
-} from '@syncfusion/ej2-angular-maps';
-import { MatTreeModule, MatIconModule, MatButtonModule } from '@angular/material';
+    MapsModule,
+    LegendService,
+    MarkerService,
+    MapsTooltipService,
+    DataLabelService,
+    BubbleService,
+    NavigationLineService,
+    SelectionService,
+    AnnotationsService,
+    ZoomService,
+    HighlightService
+  } from '@syncfusion/ej2-angular-maps';
 import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
 import * as FusionCharts from 'fusioncharts';
 import * as FusionMaps from 'fusioncharts/fusioncharts.maps';
 import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
+import { MatTreeModule, MatIconModule, MatButtonModule } from '@angular/material';
 
 export function logger(reducer: ActionReducer<any>): any {
   return storeLogger()(reducer);
@@ -80,7 +78,6 @@ FusionChartsModule.fcRoot(
   ],
   imports: [
     BrowserModule,
-    MapsModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,

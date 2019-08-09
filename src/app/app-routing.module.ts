@@ -7,7 +7,6 @@ import { CustomerformComponent } from './modules/customer/customerform/customerf
 import { TasklistComponent } from './modules/task/tasklist/tasklist.component';
 import { ProjectComponent } from './modules/project/project.component';
 import { ProjectFormComponent } from './modules/project/project-form/project-form.component';
-import { MapChartComponent } from './common/map-chart/map-chart.component';
 
 const routes: Routes = [
   {
@@ -17,7 +16,6 @@ const routes: Routes = [
   { path: 'layout/project', component: ProjectComponent },
   { path: 'layout/employee', component: EmployeeComponent },
   { path: 'layout/task', component: TasklistComponent },
-  { path: 'layout/mapchart', component: MapChartComponent},
   { path: '**', component: PNFComponent }
 ];
 
@@ -37,10 +35,5 @@ const routes: Routes = [
 export class AppRoutingModule {
 }
 
-export const routingComponent = [CustomerComponent,
-  CustomerformComponent,
-  EmployeeComponent,
-  ProjectComponent,
-  ProjectFormComponent,
-  MapChartComponent,
-  PNFComponent];
+export const routingComponent = [CustomerComponent, CustomerformComponent, EmployeeComponent, ProjectComponent,
+  ProjectFormComponent, PNFComponent];
