@@ -30,10 +30,12 @@ import { CdkTreeModule } from '@angular/cdk/tree';
 import { projectReducer } from 'src/store/reducers/project.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SmartTableComponent } from './common/smart-table/smart-table.component';
-<<<<<<< HEAD
 import { taskReducer } from 'src/store/reducers/task.reducer';
-import { MapChartComponent } from './common/map-chart/map-chart.component';
-import { MapsModule,
+import { FusionChartsModule } from 'angular-fusioncharts';
+
+
+import {
+  MapsModule,
   LegendService,
   MarkerService,
   MapsTooltipService,
@@ -43,17 +45,23 @@ import { MapsModule,
   SelectionService,
   AnnotationsService,
   ZoomService,
-  HighlightService} from '@syncfusion/ej2-angular-maps';
-=======
+  HighlightService
+} from '@syncfusion/ej2-angular-maps';
 import { MatTreeModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { TreeViewModule } from '@syncfusion/ej2-angular-navigations';
-
->>>>>>> c495c09138143320534b73a5f1a888bb97687e95
+import * as FusionCharts from 'fusioncharts';
+import * as FusionMaps from 'fusioncharts/fusioncharts.maps';
+import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 
 export function logger(reducer: ActionReducer<any>): any {
   return storeLogger()(reducer);
 }
 export const metaReducers = environment.production ? [] : [logger];
+FusionChartsModule.fcRoot(
+  FusionCharts,
+  FusionMaps,
+  FusionTheme
+);
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,9 +93,10 @@ export const metaReducers = environment.production ? [] : [logger];
     SimpleModalModule,
     BrowserAnimationsModule,
     DragDropModule,
-    TreeViewModule
+    TreeViewModule,
+    FusionChartsModule
   ],
-  providers: [ LegendService,
+  providers: [LegendService,
     MarkerService,
     MapsTooltipService,
     DataLabelService,

@@ -7,19 +7,21 @@
     </button>
 
 </div>
+<fusioncharts width="800" height="550" type="california" [dataSource]="dataSource">
+</fusioncharts>
 <div id='treeparent'>
-        <ejs-treeview id="tree" [fields]="field" [cssClass]="cssClass" [allowDragAndDrop]=true>
-            <ng-template #nodeTemplate="" let-data="">
-                <div>
-                    <img class="eimage"
-                        src="https://ej2.syncfusion.com/demos/src/treeview/images/employees/{{data.eimg}}.png"
-                        alt="{{data.eimg}}" />
-                    <div class="ename">{{data.name}}</div>
-                    <div class="ejob">{{data.job}}</div>
-                </div>
-            </ng-template>
-        </ejs-treeview>
-    </div>
+    <ejs-treeview id="tree" [fields]="field" [cssClass]="cssClass" [allowDragAndDrop]=true>
+        <ng-template #nodeTemplate="" let-data="">
+            <div>
+                <img class="eimage"
+                    src="https://ej2.syncfusion.com/demos/src/treeview/images/employees/{{data.eimg}}.png"
+                    alt="{{data.eimg}}" />
+                <div class="ename">{{data.name}}</div>
+                <div class="ejob">{{data.job}}</div>
+            </div>
+        </ng-template>
+    </ejs-treeview>
+</div>
 <ng-template [ngIf]="taskList.length > 0">
     <app-table [enableHover]="true" [isEditRequire]="true" [isDeleteRequire]="true" [spaceNeedColumn]="[]"
         [data]="taskList" [getEditableId]="getEditableId" [getDeleteId]="getDeleteId" [dataTarget]="'#taskFormModal'">
@@ -54,4 +56,3 @@
     </div>
 </div> -->
     <!-- <app-taskform class="flex"></app-taskform> -->
-
